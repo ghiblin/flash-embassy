@@ -1,4 +1,5 @@
 import React from 'react';
+import './form.scss';
 
 class Form extends React.Component {
   state = {
@@ -19,7 +20,14 @@ class Form extends React.Component {
   }
 
   submitForm = (e) => {
-
+    const { italian, english } = this.state;
+    if (!!italian && !!english) {
+      this.props.saveCard({
+        italian, english, 
+      });
+    } else {
+      this.setState({ showError: true });
+    }
   }
 
   render() {
@@ -67,7 +75,8 @@ class Form extends React.Component {
               <input type="checkbox" />interjuction
             </label>
             <br />
-            <button id="create-card__button" onClick={ this.submitForm }>Create!</button>
+            <button className="create-card__button" onClick={ this.submitForm }>Create!</button>&nbsp;
+            <button className="create-card__button" onClick={ this.props.closeModal }>Cancel</button>
             <div className='create-card__error'>
               { errorMessage }
             </div>

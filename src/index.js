@@ -1,4 +1,6 @@
-import 'rxjs';
+//import 'rxjs';
+import Rx from 'rxjs';
+window.Rx = Rx;
 import SC from 'soundcloud';
 import React from 'react';
 import ReactDOM from 'react-dom';

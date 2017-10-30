@@ -16,6 +16,12 @@ class Presenter extends React.Component {
     this.setState({ showModal: false });
   }
 
+  saveCard = (card) => {
+    const { cards } = this.props;
+    this.props.saveCards([...cards, card]);
+    this.setState({ showModal: false });
+  }
+
   componentDidMount() {
     this.props.loadCards();
   }
@@ -31,7 +37,7 @@ class Presenter extends React.Component {
           <Container cards={ cards } />
           { 
             showModal 
-              ? <Form closeModal={ this.closeModal } />
+              ? <Form closeModal={ this.closeModal } saveCard={ this.saveCard } />
               : null
           }
         </div>

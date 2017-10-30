@@ -5,7 +5,7 @@ const STORE_KEY = 'flash-embassy-cards';
 
 const CARDS_LOAD = 'card/CARDS_LOAD';
 const CARDS_SET = 'card/CARDS_SET';
-const CARD_ADD = 'card/CARD_ADD';
+const CARDS_SAVE = 'card/CARDS_SAVE';
 
 function doLoadCards() {
   return {
@@ -20,33 +20,44 @@ function doSetCards(cards) {
   }
 }
 
-function doAddCard(card) {
+function doSaveCards(cards) {
   return {
-    type: CARD_ADD,
-    card
+    type: CARDS_SAVE,
+    cards
   }
 }
 
 function loadCards() {
-  JSON.parse(localStorage.getItem(STORE_KEY)) || [];
+  return new Promise((resolve, reject) => {
+    resolve(JSON.parse(localStorage.getItem(STORE_KEY)) || [{italian:'ciao',english:'hello'}]);
+  });
 }
 
 function saveCards(cards) {
-  localStorage.setItem(STORE_KEY, JSON.serialize(cards));
+console.log('saveCards:', cards, JSON.stringify(cards));
+  return new Promise((resolve, reject) => {
+    localStorage.setItem(STORE_KEY, JSON.stringify(cards));
+    resolve(cards);
+  });
 }
 
 const loadCardsEpic = (action$) =>
   action$.ofType(CARDS_LOAD)
     .mergeMap(() =>
       Observable
-        .from(loadCards())
+        .fromPromise(loadCards())
         .map(doSetCards)
     )
-/*
-const addCardEpic = (action$) =>
-  action$.ofType(CARD_ADD)
-    .map()
-*/
+
+const saveCardsEpic = (action$) =>
+  action$.ofType(CARDS_SAVE)
+    .mergeMap((action) => {
+console.log('saveCardsEpic:', action);
+      return Observable
+        .fromPromise(saveCards(action.cards))
+        .map(doSetCards)
+    }
+  );
 
 const intialState = {
   cards: [],
@@ -71,13 +82,14 @@ function applySetCards(state, action) {
 
 const actionCreators = {
   doLoadCards,
+  doSaveCards,
 }
 
 const actionTypes = {
   CARDS_LOAD,
 }
 
-const epics = combineEpics(loadCardsEpic);
+const epics = combineEpics(loadCardsEpic, saveCardsEpic);
 
 export {
   actionCreators,
