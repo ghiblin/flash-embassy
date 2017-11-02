@@ -23,10 +23,22 @@ export default class Panel extends React.Component {
         <div className="card__flip-card" onClick={ this.toggleAnswer }>
           <span className={`fa fa-${iconClass}`} />
         </div>
+        {
+          this.props.showPrevCard && 
+          <div className="card__prev-card" onClick={this.props.showPrevCard}>
+            <span className="fa fa-chevron-left" />
+          </div>
+        }
         <div className={`card__content--${contentClass}`}>
           { content }
         </div>
-        <div className={`card__actions ${actionClass}`}>
+        { 
+          this.props.showNextCard && 
+          <div className="card__next-card" onClick={this.props.showNextCard}>
+            <span className="fa fa-chevron-right" />
+          </div>
+        }
+        <div className={`card__actions ${actionClass}`}>          
           <div className="card__button failure">
             <i className="fa fa-thumbs-down" aria-hidden="true"></i>
           </div>

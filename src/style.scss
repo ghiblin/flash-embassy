@@ -148,6 +148,16 @@ html, body {
   color: #333;
 }
 
+.card__prev-card {
+  position: absolute;
+  left: 1em;
+}
+
+.card__next-card {
+  position: absolute;
+  right: 1em;
+}
+
 .card__actions {
   position: absolute;
   bottom: 10%;
