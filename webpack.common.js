@@ -82,4 +82,10 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx']
   },
+  node: {
+    fs: 'empty',
+    net: 'empty',
+    tls: 'empty',
+    'crypto': 'empty'
+  },
 };
