@@ -39,7 +39,7 @@
   
   h1 {
     font-size: 1.3em;
-    margin-top: 2.5em;
+    margin-top: 0.5em;
     color: #333;
   }  
 }
@@ -50,7 +50,7 @@
 
 .create-card__input-wrapper {
   text-align: center;
-  input:not([type='checkbox']) {
+  input:not([type='radio']) {
     //margin: 0.75em 0;
     margin: 0.75em 0;
     padding: 0.5em 1em;
@@ -84,7 +84,7 @@
   background: white;
   color: #333;
   cursor: pointer;
-  margin-top: 1.75em;
+  margin-top: 0.75em;
   padding: 0.5em 0.75em;
   
   &:focus {

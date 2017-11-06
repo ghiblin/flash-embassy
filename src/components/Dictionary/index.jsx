@@ -1,9 +1,22 @@
 import React from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { actionCreators as cardActionCreators } from '../../ducks/card';
+import Cards from './presenter';
 
-const Dictionary = () => (
-  <div className="wrapper">
-    TODO
-  </div>
-);
+function mapStateToProps(state) {
+  const { cards } = state.card;
+window.cards = cards;  
+  return {
+    cards: cards.sort((a,b) => a.italian.toLowerCase() < b.italian.toLowerCase() ? -1 : 1),
+  }
+}
 
-export default Dictionary;
+function mapDispatchToProps(dispatch) {
+  return {
+    loadCards: bindActionCreators(cardActionCreators.doLoadCards, dispatch),
+    saveCards: bindActionCreators(cardActionCreators.doSaveCards, dispatch),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cards);

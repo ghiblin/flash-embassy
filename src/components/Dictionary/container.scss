@@ -1,0 +1,19 @@
+ul.card__list {
+  list-style: none;
+  li {
+    text-align: center;
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 0.5em 2em;
+    background-color: #cecece;
+
+    .card__destroy {
+      position: absolute;
+      right: 2px;
+      display: none;
+    }
+    &:hover .card__destroy {
+      display: inline-block;
+    }
+  }
+}

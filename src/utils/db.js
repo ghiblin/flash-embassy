@@ -1,2 +1,5 @@
 import PouchDB from 'pouchdb';
- window.db = new PouchDB('todos');
+const db = new PouchDB('flash-embassy');
+
+window.db = db;
+export default db;

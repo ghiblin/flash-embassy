@@ -1,6 +1,8 @@
 import { Observable } from 'rxjs';
 import { combineEpics } from 'redux-observable';
 
+import db from '../utils/db';
+
 const STORE_KEY = 'flash-embassy-cards';
 
 const CARDS_LOAD = 'card/CARDS_LOAD';
@@ -28,17 +30,35 @@ function doSaveCards(cards) {
 }
 
 function loadCards() {
-  return new Promise((resolve, reject) => {
-    resolve(JSON.parse(localStorage.getItem(STORE_KEY)) || [{italian:'ciao',english:'hello'}]);
-  });
+  return db.get('training')
+    .catch(err => {
+      if (err.name === 'not_found') {
+        return {
+          _id: 'training',
+          cards: []
+        };
+      } else {
+        throw err;
+      }
+    });
 }
 
+
 function saveCards(cards) {
-console.log('saveCards:', cards, JSON.stringify(cards));
-  return new Promise((resolve, reject) => {
-    localStorage.setItem(STORE_KEY, JSON.stringify(cards));
-    resolve(cards);
-  });
+  return db.get('training')
+    .catch(err => { 
+      if (err.name === 'not_found') {
+        return { 
+          _id:'traning', 
+          cards:[]
+        };
+      }  
+      throw err;
+    })
+    .then(doc => {
+      doc.cards = cards;
+      return db.put(doc);
+    });
 }
 
 const loadCardsEpic = (action$) =>
@@ -46,6 +66,7 @@ const loadCardsEpic = (action$) =>
     .mergeMap(() =>
       Observable
         .fromPromise(loadCards())
+        .map(doc => doc.cards)
         .map(doSetCards)
     )
 
@@ -55,7 +76,7 @@ const saveCardsEpic = (action$) =>
 console.log('saveCardsEpic:', action);
       return Observable
         .fromPromise(saveCards(action.cards))
-        .map(doSetCards)
+        .map(doc => doc.ok ? doSetCards(action.cards) : null);
     }
   );
 
