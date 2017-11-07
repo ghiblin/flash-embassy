@@ -1,15 +1,21 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 //import './form.scss';
 
 import { RadioGroup, Radio } from '../Radio';
 
 class Form extends React.Component {
-  state = {
-    italian: '',
-    english: '',
-    showError: false,
-    type: '',
-  };
+  constructor(props) {
+    super(props);
+console.log('form.constructor', props);
+    this.state = {
+      id: props.id,
+      italian: props.italian || '',
+      english: props.english || '',
+      type: props.type || '',
+      showError: false,
+    };
+  }
 
   hideError = () => {
     this.setState({ showError: false });
@@ -28,10 +34,11 @@ class Form extends React.Component {
   }
 
   submitForm = (e) => {
-    const { italian, english, type } = this.state;
+    const { id, italian, english, type } = this.state;
+
     if (!!italian && !!english && !!type) {
       this.props.saveCard({
-        italian, english, type
+        id, italian, english, type
       });
     } else {
       this.setState({ showError: true });
@@ -39,7 +46,7 @@ class Form extends React.Component {
   }
 
   render() {
-    const { italian, english, showError, type } = this.state;
+    const { id, italian, english, showError, type } = this.state;
     const errorMessage = showError ? 'Please fill all fields' : '';
 
     return (
@@ -85,7 +92,7 @@ class Form extends React.Component {
               </label>
             </RadioGroup>
             <br />
-            <button className="create-card__button" onClick={ this.submitForm }>Create!</button>&nbsp;
+            <button className="create-card__button" onClick={ this.submitForm }>{ (id >= 0) ? 'Save!' : 'Create!' }</button>&nbsp;
             <button className="create-card__button" onClick={ this.props.closeModal }>Cancel</button>
             <div className='create-card__error'>
               { errorMessage }
@@ -96,5 +103,14 @@ class Form extends React.Component {
     );
   }
 }
+
+Form.propTypes = {
+  id: PropTypes.number,
+  italian: PropTypes.string,
+  english: PropTypes.string,
+  type: PropTypes.oneOf(['noun', 'verb', 'adjective', 'adverb', 'conjunction', 'interjuction']),
+  saveCard: PropTypes.func.isRequired,
+  closeModal: PropTypes.func.isRequired,
+};
 
 export default Form;

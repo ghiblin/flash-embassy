@@ -6,19 +6,33 @@ import Form from './form';
 class Presenter extends React.Component {
   state = {
     showModal: false,
+    card: {}
   }
 
-  openModal = () => {
-    this.setState({ showModal: true });
+  openModal = (id) => {
+    this.setState({ 
+      showModal: true,
+      card: (id >= 0) ? { id, ...this.props.cards[id] } : {}
+    });
   } 
 
   closeModal = () => {
-    this.setState({ showModal: false });
+    this.setState({ 
+      showModal: false,
+      card: {},
+    });
   }
 
   saveCard = (card) => {
     const { cards } = this.props;
-    this.props.saveCards([...cards, card]);
+    const id = card.id;
+    delete card.id;
+
+    this.props.saveCards(
+      id >= 0 
+        ? [...cards.slice(0, id), card, ...cards.slice(id + 1)]
+        : [...cards, card]
+    );
     this.setState({ showModal: false });
   }
 
@@ -36,16 +50,16 @@ class Presenter extends React.Component {
 
   render() {
     const { cards } = this.props;
-    const { showModal } = this.state;
-
+    const { showModal, card = {} } = this.state;
+console.log('presenter.render card', card);
     return (
       <div className="wrapper">
-        <Header addCard={ this.openModal } />
+        <Header addCard={ () => this.openModal() } />
         <div className='content-wrapper'>
-          <Container cards={ cards } deleteCard={ this.deleteCard } />
+          <Container cards={ cards } deleteCard={ this.deleteCard } editCard={ this.openModal } />
           { 
             showModal 
-              ? <Form closeModal={ this.closeModal } saveCard={ this.saveCard } />
+              ? <Form closeModal={ this.closeModal } saveCard={ this.saveCard } { ...card } />
               : null
           }
         </div>
