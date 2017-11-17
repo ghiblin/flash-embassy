@@ -14,7 +14,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     loadCards: bindActionCreators(cardActionCreators.doLoadCards, dispatch),
-    saveCards: bindActionCreators(cardActionCreators.doSaveCards, dispatch),
+    saveCard: bindActionCreators(cardActionCreators.doSaveCard, dispatch),
   }
 }
 

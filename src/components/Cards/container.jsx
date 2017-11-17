@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Panel from './panel';
 import _ from 'lodash';
 
@@ -14,11 +15,24 @@ class Container extends React.Component {
     }
   }
 
-  showNextCard = (e) => {
-    e.stopPropagation();
+  showNextCard() {
     if ((this.state.cardNumber + 1) < this.props.cards.length) {
       this.setState({ cardNumber: this.state.cardNumber + 1 });
     }
+  }
+  
+  incOK = (cardNumber) => {
+    const card = this.props.cards[cardNumber];
+    card.ok = (card.ok || 0) + 1;
+    this.props.saveCard(card);
+    this.showNextCard();
+  }
+
+  incFail = (cardNumber) => {
+    const card = this.props.cards[cardNumber];
+    card.fail = (card.fail || 0) + 1;
+    this.props.saveCard(card);
+    this.showNextCard();
   }
 
   generateCards() {
@@ -31,8 +45,8 @@ class Container extends React.Component {
           key={i}
           frontContent={card.italian}
           backContent={card.english}
-          showPrevCard={(cardNumber>0) ? this.showPrevCard : null}
-          showNextCard={((cardNumber+1)<cards.length) ? this.showNextCard : null}
+          onSuccess={ this.incOK }
+          onFail={ this.incFail }
           cardNumber={cardNumber}
         />
       ));
@@ -63,6 +77,18 @@ class Container extends React.Component {
       </div>
     );
   }
+}
+
+Container.propTypes = {
+  cards: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    italian: PropTypes.string.isRequired,
+    english: PropTypes.string.isRequired,
+    type: PropTypes.string,
+    ok: PropTypes.number,
+    fail: PropTypes.number,
+  })).isRequired,
+  saveCard: PropTypes.func.isRequired,
 }
 
 export default Container;

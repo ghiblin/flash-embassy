@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default class Panel extends React.Component {
   state = {
@@ -7,6 +8,18 @@ export default class Panel extends React.Component {
 
   toggleAnswer = () => {
     this.setState({ showAnswer: !this.state.showAnswer });
+  }
+
+  onClickOk = (e) => {
+    e.stopPropagation();
+    this.toggleAnswer();
+    this.props.onSuccess(this.props.cardNumber);
+  }
+
+  onClickFail = (e) => {
+    e.stopPropagation();
+    this.toggleAnswer();
+    this.props.onFail(this.props.cardNumber);
   }
 
   render() {
@@ -23,26 +36,14 @@ export default class Panel extends React.Component {
         <div className="card__flip-card" onClick={ this.toggleAnswer }>
           <span className={`fa fa-${iconClass}`} />
         </div>
-        {
-          this.props.showPrevCard && 
-          <div className="card__prev-card" onClick={this.props.showPrevCard}>
-            <span className="fa fa-chevron-left" />
-          </div>
-        }
         <div className={`card__content--${contentClass}`}>
           { content }
         </div>
-        { 
-          this.props.showNextCard && 
-          <div className="card__next-card" onClick={this.props.showNextCard}>
-            <span className="fa fa-chevron-right" />
-          </div>
-        }
         <div className={`card__actions ${actionClass}`}>          
-          <div className="card__button failure">
+          <div className="card__button failure" onClick={ this.onClickFail }>
             <i className="fa fa-thumbs-down" aria-hidden="true"></i>
           </div>
-          <div className="card__button success">
+          <div className="card__button success" onClick={ this.onClickOk }>
             <i className="fa fa-thumbs-up" aria-hidden="true"></i>
           </div>
         </div>
@@ -50,3 +51,11 @@ export default class Panel extends React.Component {
     )
   }
 }
+
+Panel.propTypes = {
+  frontContent: PropTypes.string.isRequired,
+  backContent: PropTypes.string.isRequired,
+  cardNumber: PropTypes.number.isRequired,
+  onFail: PropTypes.func.isRequired,
+  onSuccess: PropTypes.func.isRequired,
+};

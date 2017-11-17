@@ -1,5 +1,7 @@
 import React from 'react';
-import Header from './header';
+import PropTypes from 'prop-types';
+//import Header from './header';
+import Header from '../Header';
 import Container from './container';
 import Form from './form';
 
@@ -12,7 +14,7 @@ class Presenter extends React.Component {
   openModal = (id) => {
     this.setState({ 
       showModal: true,
-      card: (id >= 0) ? { id, ...this.props.cards[id] } : {}
+      card: this.props.cards.filter(el => el.id === id)[0] || {}
     });
   } 
 
@@ -24,24 +26,12 @@ class Presenter extends React.Component {
   }
 
   saveCard = (card) => {
-    const { cards } = this.props;
-    const id = card.id;
-    delete card.id;
-
-    this.props.saveCards(
-      id >= 0 
-        ? [...cards.slice(0, id), card, ...cards.slice(id + 1)]
-        : [...cards, card]
-    );
+    this.props.saveCard(card);
     this.setState({ showModal: false });
   }
 
-  deleteCard = (i) => {
-    const { cards } = this.props;
-    this.props.saveCards([
-      ...cards.slice(0, i), 
-      ...cards.slice(i + 1)
-    ]);
+  deleteCard = (id) => {
+    this.props.deleteCard(id);
   }
 
   componentDidMount() {
@@ -51,10 +41,12 @@ class Presenter extends React.Component {
   render() {
     const { cards } = this.props;
     const { showModal, card = {} } = this.state;
-console.log('presenter.render card', card);
     return (
       <div className="wrapper">
-        <Header addCard={ () => this.openModal() } />
+        <Header 
+          title={ <span><i className="fa fa-book" aria-hidden="true"></i>&nbsp;Dictionary</span> } 
+          buttons={[ <span className="fa fa-plus" onClick={ () => this.openModal() } /> ]}
+        />
         <div className='content-wrapper'>
           <Container cards={ cards } deleteCard={ this.deleteCard } editCard={ this.openModal } />
           { 
@@ -66,6 +58,19 @@ console.log('presenter.render card', card);
       </div>
     )
   }
+}
+// <Header addCard={ () => this.openModal() } />
+Presenter.propTypes = {
+  cards: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    italian: PropTypes.string.isRequired,
+    english: PropTypes.string.isRequired,
+    type: PropTypes.oneOf(['noun', 'verb', 'adjective', 'adverb', 'conjuction', 'interjuction']),
+    ok: PropTypes.number,
+    fail: PropTypes.number,
+  })),
+  saveCard: PropTypes.func.isRequired,
+  deleteCard: PropTypes.func.isRequired,
 }
 
 export default Presenter;

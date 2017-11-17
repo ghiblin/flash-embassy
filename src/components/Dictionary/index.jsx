@@ -6,7 +6,6 @@ import Cards from './presenter';
 
 function mapStateToProps(state) {
   const { cards } = state.card;
-window.cards = cards;  
   return {
     cards: cards.sort((a,b) => a.italian.toLowerCase() < b.italian.toLowerCase() ? -1 : 1),
   }
@@ -15,7 +14,8 @@ window.cards = cards;
 function mapDispatchToProps(dispatch) {
   return {
     loadCards: bindActionCreators(cardActionCreators.doLoadCards, dispatch),
-    saveCards: bindActionCreators(cardActionCreators.doSaveCards, dispatch),
+    saveCard: bindActionCreators(cardActionCreators.doSaveCard, dispatch),
+    deleteCard: bindActionCreators(cardActionCreators.doDeleteCard, dispatch),
   }
 }
 

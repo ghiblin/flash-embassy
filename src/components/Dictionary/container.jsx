@@ -20,7 +20,7 @@ const Container = ({cards = [], deleteCard, editCard}) => (
       { 
         cards
           .map((el, i) => 
-          <li key={i} onClick={ () => editCard(i) }>
+          <li key={i} onClick={ () => editCard(el.id) }>
             {getShortType(el.type)} {el.italian} - {el.english}
             <span className="card__destroy" onClick={ (evt) => { evt.stopPropagation(); deleteCard(i); } }>
               <i className="fa fa-times-circle" aria-hidden="true"></i>

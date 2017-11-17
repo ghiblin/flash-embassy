@@ -56,6 +56,7 @@
     "redux-logger": "^3.0.6",
     "redux-observable": "^0.16.0",
     "rxjs": "^5.0.0-beta.11",
+    "shortid": "^2.2.8",
     "soundcloud": "^3.1.2",
     "whatwg-fetch": "^2.0.3"
   }
