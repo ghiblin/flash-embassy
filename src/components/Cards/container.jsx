@@ -3,9 +3,19 @@ import PropTypes from 'prop-types';
 import Panel from './panel';
 import _ from 'lodash';
 
+import Branch from './branch';
+
 class Container extends React.Component {
   state = {
     cardNumber: 0,
+    totOk: 0,
+    totFail: 0,
+    status: 'ready',
+  }
+
+  start = (e) => {
+    e.stopPropagation();
+    this.setState({ status: 'running'});
   }
 
   showPrevCard = (e) => {
@@ -18,6 +28,8 @@ class Container extends React.Component {
   showNextCard() {
     if ((this.state.cardNumber + 1) < this.props.cards.length) {
       this.setState({ cardNumber: this.state.cardNumber + 1 });
+    } else {
+      this.setState({ status: 'finished' });
     }
   }
   
@@ -25,6 +37,7 @@ class Container extends React.Component {
     const card = this.props.cards[cardNumber];
     card.ok = (card.ok || 0) + 1;
     this.props.saveCard(card);
+    this.setState({ totOk: this.state.totOk + 1 });
     this.showNextCard();
   }
 
@@ -32,6 +45,7 @@ class Container extends React.Component {
     const card = this.props.cards[cardNumber];
     card.fail = (card.fail || 0) + 1;
     this.props.saveCard(card);
+    this.setState({ totFail: this.state.totFail + 1 });
     this.showNextCard();
   }
 
@@ -52,22 +66,19 @@ class Container extends React.Component {
       ));
   }
 
-  generateDots() {
-    const times = this.props.cards.length;
-    return _.times(times).map((num) => {
-      const dotClass = num === this.state.cardNumber ? 'active' : '';
-      return (
-        <span
-          key={num}
-          className={`card-container__dot fa fa-circle ${dotClass}`}
-          onClick={() => this.setState({ cardNumber: num })}
-        />
-      )
-    });
-  }
-
   render() {
     const { cards = [] } = this.props;
+
+    return (
+      <Branch
+        cards={cards}
+        start={this.start}
+        onSuccess={this.incOK}
+        onFail={this.incFail}
+        {...this.state}
+      />
+    );
+    /*
     return (
       <div>
         { this.generateCards() }
@@ -76,6 +87,7 @@ class Container extends React.Component {
         </div>
       </div>
     );
+    */
   }
 }
 
