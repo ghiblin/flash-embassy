@@ -1,11 +1,11 @@
-$background: #F1F1F1;
+$background: #560707;
 $header-color: #666666;
 $success: #1ba31b;
 $fail: #d61717;
 
 $fa-font-path: "../node_modules/font-awesome/fonts";
 @import "../node_modules/font-awesome/scss/font-awesome.scss";
-
+/*
 html, body {
   background: $background;
   font-family: roboto;
@@ -15,7 +15,7 @@ html, body {
   font-family: roboto;
   font-weight: 300;
 }
-
+*/
 // @keyframes flipBack {
 //   0% {
 //     transform: rotateY(180deg);
@@ -56,6 +56,10 @@ html, body {
   margin-top: 4em;
   transition: 0.2s;
   
+  color: #423c3c;
+  h3 {
+    color: #423c3c;
+  }
   &.back {
   
   }

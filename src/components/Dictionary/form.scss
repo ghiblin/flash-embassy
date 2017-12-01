@@ -28,7 +28,7 @@
   height: 20em;
   width: 30em;
   z-index: 1000;
-  background: rgba(255,255,255,0.95);
+  background: #d4781af2;
   animation: fadeIn 0.5s;
   text-align: center;
   box-shadow: inset 0px 0px 0px 3px gray;
@@ -39,6 +39,7 @@
   
   h1 {
     font-size: 1.3em;
+    font-weight: 400;
     margin-top: 0.5em;
     color: #333;
   }  
