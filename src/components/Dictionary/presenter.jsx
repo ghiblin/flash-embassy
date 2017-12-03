@@ -1,22 +1,44 @@
+/* global File, Blob */
 import React from 'react';
 import PropTypes from 'prop-types';
+
+import { saveAs } from 'file-saver';
+
 import Header from '../Header';
+import SearchBar from '../SearchBar';
+import IconButton from '../IconButton';
 import Container from './container';
 import Form from './form';
+import FileUploader from '../FileUploader';
+
+function filterCards(cards, term) {
+  return cards.filter(card => (
+    card.italian.search(new RegExp(term, 'gi')) >= 0 ||
+    card.english.search(new RegExp(term, 'gi')) >= 0
+  ));
+}
 
 export default class Presenter extends React.Component {
   state = {
     showModal: false,
     card: {},
+    searchTerm: '',
+    currentlyDisplayed: [],
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.loadCards();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      currentlyDisplayed: filterCards(nextProps.cards, this.state.searchTerm),
+    });
   }
 
   openModal = (id) => {
     this.setState({
-      showModal: true,
+      showModal: 'form',
       card: this.props.cards.filter(el => el.id === id)[0] || {},
     });
   }
@@ -37,20 +59,67 @@ export default class Presenter extends React.Component {
     this.props.deleteCard(id);
   }
 
+  filterList = (evt) => {
+    const { value } = evt.target;
+    const currentlyDisplayed = filterCards(this.props.cards, value);
+    this.setState({
+      searchTerm: value,
+      currentlyDisplayed,
+    });
+  }
+
+  showUploadForm = () => {
+    this.setState({
+      showModal: 'upload',
+    });
+  }
+
+  downloadCards = () => {
+    const content = JSON.stringify(this.props.cards.map(c => ({
+      italian: c.italian,
+      english: c.english,
+      type: c.type,
+    })));
+    const file = new File(
+      [content],
+      'cards.json',
+      { type: 'application/json;charset=utf-8' },
+    );
+    saveAs(file);
+  }
+
   render() {
-    const { cards } = this.props;
-    const { showModal, card = {} } = this.state;
+    const {
+      currentlyDisplayed,
+      searchTerm,
+      showModal,
+      card = {},
+    } = this.state;
     return (
       <div className="wrapper">
         <Header
           title={<span><i className="fa fa-book" aria-hidden="true" />&nbsp;Dictionary</span>}
-          buttons={[<span className="fa fa-plus" onClick={() => this.openModal()} />]}
+          buttons={[
+            <SearchBar searchTerm={searchTerm} onInputChange={this.filterList} />,
+            <IconButton icon="upload" onClick={this.showUploadForm} />,
+            <IconButton icon="download" onClick={this.downloadCards} />,
+            <IconButton icon="plus" onClick={() => this.openModal()} />,
+          ]}
         />
         <div className="content-wrapper">
-          <Container cards={cards} deleteCard={this.deleteCard} editCard={this.openModal} />
+          <Container
+            cards={currentlyDisplayed}
+            deleteCard={this.deleteCard}
+            editCard={this.openModal}
+          />
           {
-            showModal
+            showModal === 'form'
               ? <Form closeModal={this.closeModal} saveCard={this.saveCard} {...card} />
+              : null
+          }
+          {
+            showModal === 'upload'
+              ? <FileUploader />
               : null
           }
         </div>

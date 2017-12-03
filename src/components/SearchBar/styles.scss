@@ -1,0 +1,51 @@
+.SearchBox {
+  width: 250px;
+  vertical-align: middle;
+  white-space: nowrap;
+  position: relative;
+
+  .icon {
+    position: absolute;
+    margin-left: 17px;
+    margin-top: 11px;
+    z-index: 1;
+    color: #4f5b66;
+  }
+
+  input {
+    width: 204px;
+    height: 38px;
+    background: #ffffff; // #2b303b;
+    border: none;
+    float: left;
+    color: #63717f;
+    padding-left: 45px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+
+    -webkit-transition: background .55s ease;
+    -moz-transition: background .55s ease;
+    -ms-transition: background .55s ease;
+    -o-transition: background .55s ease;
+    transition: background .55s ease;
+    
+    &::-webkit-input-placeholder {
+      color: #65737e;
+    }
+    &:-moz-placeholder {
+      color: #65737e;
+    }
+    &::-moz-placeholder {
+      color: #65737e;
+    }
+    &:-ms-input-placeholder {
+      color: #65737e;
+    }
+
+    &:hover, &:focus, &:active {
+      outline: none;
+      background: #560707; 
+    }
+  }
+}

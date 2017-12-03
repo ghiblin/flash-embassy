@@ -1,0 +1,86 @@
+$bgcolor: #207cca;
+$color: #fafafa;
+
+.FileUploader {
+
+  form {
+    width: 500px;
+    margin: 50px auto;
+  }
+
+  .arrow {
+    position: relative;
+    left: -8px;
+    background: $bgcolor;
+    padding: 8px 15px;
+    &.hover {
+      background: $color;
+    }
+    &:after{
+      right: 100%;
+      top: 50%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      border-color: rgba(32,124,202,0);
+      border-right-color: $bgcolor;
+      border-width: 10px;
+      margin-top: -10px;
+    }
+    &.hover:after {
+      border-right-color: $color;
+    }
+  }
+
+  input[type=text] {
+    padding:8px 15px;
+    background:rgba(50, 50, 50, 0.2);
+    border:0px solid #dbdbdb;
+    width: 320px;
+    &::-webkit-input-placeholder {
+      font-family: Lato;
+      font-weight: bold;
+    }
+    &:-moz-placeholder {
+      font-family: Lato;
+      font-weight: bold;
+    }
+    &::-moz-placeholder {
+      font-family: Lato;
+      font-weight: bold;
+    }
+    &:-ms-placeholder {
+      font-family: Lato;
+      font-weight: bold;
+    }
+  }
+
+  button {
+    z-index: 1;
+    width: 120px;
+    position:relative;
+    padding:6px 15px;
+    
+    border:2px solid $bgcolor;
+    background-color:$bgcolor;
+    color: $color;
+    &.hover {
+      background-color: $color;
+      border-color: $color;
+      color: $bgcolor;
+    }
+  }
+  
+  input[type=file] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: 0px solid #ffffff;
+    z-index: 2;
+    opacity: 0;
+  }
+}

@@ -18,10 +18,6 @@ class Form extends React.Component {
     };
   }
 
-  hideError = () => {
-    this.setState({ showError: false });
-  }
-
   onInputChange = (e) => {
     this.setState({
       [e.currentTarget.name]: e.currentTarget.value,
@@ -30,46 +26,70 @@ class Form extends React.Component {
 
   onRadioChange = (value) => {
     this.setState({
-      type: value
+      type: value,
     });
   }
 
-  submitForm = (e) => {
-    const { id, italian, english, type } = this.state;
+  hideError = () => {
+    this.setState({ showError: false });
+  }
+
+  submitForm = () => {
+    const {
+      id,
+      italian,
+      english,
+      type,
+    } = this.state;
 
     if (!!italian && !!english && !!type) {
-      this.props.saveCard({ id, italian, english, type });
+      this.props.saveCard({
+        id,
+        italian,
+        english,
+        type,
+      });
     } else {
       this.setState({ showError: true });
     }
   }
 
   render() {
-    const { id, italian, english, showError, type, ok, fail } = this.state;
+    const {
+      id,
+      italian,
+      english,
+      showError,
+      type,
+      ok,
+      fail,
+    } = this.state;
     const isNew = !id;
     const errorMessage = showError ? 'Please fill all fields' : '';
 
     return (
-      <div className='create-card'>
-        <div className='create-card__shadow' onClick={ this.props.closeModal } />
-        <div className='create-card__body'>
+      <div className="create-card">
+        <div className="create-card__shadow" onClick={this.props.closeModal} />
+        <div className="create-card__body">
           <h1>{isNew ? 'Create New Card' : 'Update Card'}</h1>
           <div className="create-card__input-wrapper">
             <span className="flag_it" />
-            <input name='italian'
-                  placeholder='Enter a new Word'
-                  value={italian}
-                  onChange={ this.onInputChange }
+            <input
+              name="italian"
+              placeholder="Enter a new Word"
+              value={italian}
+              onChange={this.onInputChange}
             />
             <br />
             <span className="flag_uk" />
-            <input name='english'
-                  placeholder='Enter a translation'
-                  value={english}
-                  onChange={ this.onInputChange }
+            <input
+              name="english"
+              placeholder="Enter a translation"
+              value={english}
+              onChange={this.onInputChange}
             />
             <br />
-            <RadioGroup name="type" selectedValue={type} onChange={ this.onRadioChange }>
+            <RadioGroup name="type" selectedValue={type} onChange={this.onRadioChange}>
               <label>
                 <Radio value="noun" />noun
               </label>
@@ -94,21 +114,31 @@ class Form extends React.Component {
             <br />
             <span style={{ marginRight: 10 }}>
               <b>{ ok }</b>&nbsp;
-              <i className="fa fa-thumbs-up"></i>
+              <i className="fa fa-thumbs-up" />
             </span>
             <span style={{ marginLeft: 10 }}>
               <b>{ fail }</b>&nbsp;
-              <i className="fa fa-thumbs-down"></i>
+              <i className="fa fa-thumbs-down" />
             </span>
-            <br/>
-            <button className="create-card__button" onClick={ this.submitForm }>{ (id >= 0) ? 'Save!' : 'Create!' }</button>&nbsp;
-            <button className="create-card__button" onClick={ this.props.closeModal }>Cancel</button>
-            <div className='create-card__error'>
+            <br />
+            <button
+              className="create-card__button"
+              onClick={this.submitForm}
+            >
+              {(id >= 0) ? 'Save!' : 'Create!'}
+            </button>&nbsp;
+            <button
+              className="create-card__button"
+              onClick={this.props.closeModal}
+            >
+              Cancel
+            </button>
+            <div className="create-card__error">
               { errorMessage }
             </div>
           </div>
         </div>
-      </div>  
+      </div>
     );
   }
 }
@@ -122,6 +152,13 @@ Form.propTypes = {
   fail: PropTypes.number,
   saveCard: PropTypes.func.isRequired,
   closeModal: PropTypes.func.isRequired,
+};
+
+Form.defaultProps = {
+  italian: '',
+  english: '',
+  ok: 0,
+  fail: 0,
 };
 
 export default Form;

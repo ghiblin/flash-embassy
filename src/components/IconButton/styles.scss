@@ -1,0 +1,28 @@
+.IconButton {
+  width: 38px;
+  height: 38px;
+
+  color: #560707;
+  background: #ffffff;
+  border-radius: 5px;
+  
+  -webkit-transition: background .55s ease, color .55s ease;
+  -moz-transition: background .55s ease, color .55s ease;
+  -ms-transition: background .55s ease, color .55s ease;
+  -o-transition: background .55s ease, color .55s ease;
+  transition: background .55s ease, color .55s ease;
+
+  &:hover {
+    color: #ffffff;
+    background: #560707;
+  }
+
+  i {
+    display: inline-block;
+    line-height: 38px;
+    width: 38px;
+    height: 38px;
+    text-align: center;
+    vertical-align: bottom;
+  }
+}
