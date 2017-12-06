@@ -13,6 +13,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     loadCards: bindActionCreators(cardActionCreators.doLoadCards, dispatch),
+    addCards: bindActionCreators(cardActionCreators.doAddCards, dispatch),
     saveCard: bindActionCreators(cardActionCreators.doSaveCard, dispatch),
     deleteCard: bindActionCreators(cardActionCreators.doDeleteCard, dispatch),
   };

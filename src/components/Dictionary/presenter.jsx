@@ -1,4 +1,4 @@
-/* global File, Blob */
+/* global File, FileReader, alert */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -88,6 +88,24 @@ export default class Presenter extends React.Component {
     saveAs(file);
   }
 
+  uploadCards = (file) => {
+    try {
+      const fr = new FileReader();
+      fr.onload = () => {
+        this.props.addCards(JSON.parse(fr.result));
+      };
+      fr.onerror = (e) => {
+        // eslint-disable-next-line no-alert
+        alert(`Error reading JSON file. ${e}`);
+      };
+      fr.readAsText(file);
+    } catch (ex) {
+      // eslint-disable-next-line
+      alert('Error parsing JSON file:' + ex);
+    }
+    this.setState({ showModal: false });
+  }
+
   render() {
     const {
       currentlyDisplayed,
@@ -119,7 +137,7 @@ export default class Presenter extends React.Component {
           }
           {
             showModal === 'upload'
-              ? <FileUploader />
+              ? <FileUploader upload={this.uploadCards} cancel={this.closeModal} />
               : null
           }
         </div>
@@ -138,6 +156,7 @@ Presenter.propTypes = {
     fail: PropTypes.number,
   })),
   loadCards: PropTypes.func.isRequired,
+  addCards: PropTypes.func.isRequired,
   saveCard: PropTypes.func.isRequired,
   deleteCard: PropTypes.func.isRequired,
 };

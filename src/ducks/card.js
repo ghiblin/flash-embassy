@@ -12,6 +12,7 @@ db.put({ _id: key, cards: [] })
 
 const CARDS_LOAD = 'card/CARDS_LOAD';
 const CARDS_SET = 'card/CARDS_SET';
+const CARDS_ADD = 'card/CARDS_ADD';
 const CARD_CREATE = 'card/CARD_CREATE';
 const CARD_SAVE = 'card/CARD_SAVE';
 const CARD_DELETE = 'card/CARD_DELETE';
@@ -24,6 +25,13 @@ function doLoadCards() {
 function doSetCards(cards) {
   return {
     type: CARDS_SET,
+    cards,
+  };
+}
+
+function doAddCards(cards) {
+  return {
+    type: CARDS_ADD,
     cards,
   };
 }
@@ -48,6 +56,18 @@ function doDeleteCard(id) {
 function loadCards() {
   return db.get(key);
 }
+// eslint-disable-next-line
+window.loadCards = loadCards;
+
+function compareWord(w1, w2) {
+  return (w1 || '').toLowerCase() === (w2 || '').toLowerCase();
+}
+
+const compareCard = c1 => c2 => (
+  compareWord(c1.italian, c2.italian) &&
+  compareWord(c1.english, c2.english) &&
+  compareWord(c1.type, c2.type)
+);
 
 function createCard(card) {
   return db.get(key)
@@ -80,6 +100,21 @@ const loadCardsEpic = action$ =>
         .fromPromise(loadCards())
         .map(doc => doc.cards)
         .map(doSetCards));
+
+const addCardsEpic = action$ =>
+  action$.ofType(CARDS_ADD)
+    .mergeMap(action =>
+      Observable
+        .fromPromise(loadCards())
+        .map(doc => doc.cards)
+        .map((cards) => {
+          const newCards = [
+            ...cards,
+            ...action.cards.filter(c => cards.filter(compareCard(c)).length === 0),
+          ];
+          console.log('newCards:', newCards);
+          return newCards;
+        }).map(doSetCards));
 
 const createCardEpic = action$ =>
   action$.ofType(CARD_CREATE)
@@ -127,6 +162,7 @@ function reducer(state = intialState, action) {
 
 const actionCreators = {
   doLoadCards,
+  doAddCards,
   doSaveCard,
   doDeleteCard,
 };
@@ -135,7 +171,13 @@ const actionTypes = {
   CARDS_LOAD,
 };
 
-const epics = combineEpics(loadCardsEpic, saveCardEpic, createCardEpic, deleteCardEpic);
+const epics = combineEpics(
+  loadCardsEpic,
+  addCardsEpic,
+  saveCardEpic,
+  createCardEpic,
+  deleteCardEpic,
+);
 
 export {
   actionCreators,

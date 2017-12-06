@@ -10,6 +10,7 @@ ul.card__list {
     .card__destroy {
       position: absolute;
       right: 2px;
+      top: 0;
       display: none;
     }
     &:hover .card__destroy {

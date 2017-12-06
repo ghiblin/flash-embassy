@@ -26,7 +26,7 @@ const Container = ({ cards, deleteCard, editCard }) => (
                 className="card__destroy"
                 onClick={(evt) => {
                   evt.stopPropagation();
-                  deleteCard(i);
+                  deleteCard(el.id);
                 }}
               >
                 <i className="fa fa-times-circle" aria-hidden="true" />

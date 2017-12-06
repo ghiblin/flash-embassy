@@ -2,85 +2,132 @@ $bgcolor: #207cca;
 $color: #fafafa;
 
 .FileUploader {
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  form {
-    width: 500px;
-    margin: 50px auto;
-  }
-
-  .arrow {
-    position: relative;
-    left: -8px;
-    background: $bgcolor;
-    padding: 8px 15px;
-    &.hover {
-      background: $color;
-    }
-    &:after{
-      right: 100%;
-      top: 50%;
-      border: solid transparent;
-      content: " ";
-      height: 0;
-      width: 0;
-      position: absolute;
-      border-color: rgba(32,124,202,0);
-      border-right-color: $bgcolor;
-      border-width: 10px;
-      margin-top: -10px;
-    }
-    &.hover:after {
-      border-right-color: $color;
-    }
-  }
-
-  input[type=text] {
-    padding:8px 15px;
-    background:rgba(50, 50, 50, 0.2);
-    border:0px solid #dbdbdb;
-    width: 320px;
-    &::-webkit-input-placeholder {
-      font-family: Lato;
-      font-weight: bold;
-    }
-    &:-moz-placeholder {
-      font-family: Lato;
-      font-weight: bold;
-    }
-    &::-moz-placeholder {
-      font-family: Lato;
-      font-weight: bold;
-    }
-    &:-ms-placeholder {
-      font-family: Lato;
-      font-weight: bold;
-    }
-  }
-
-  button {
-    z-index: 1;
-    width: 120px;
-    position:relative;
-    padding:6px 15px;
-    
-    border:2px solid $bgcolor;
-    background-color:$bgcolor;
-    color: $color;
-    &.hover {
-      background-color: $color;
-      border-color: $color;
-      color: $bgcolor;
-    }
-  }
-  
-  input[type=file] {
-    position: absolute;
+  .FileUploader__shadow {
+    bottom: 0;
     left: 0;
+    position: fixed;
+    right: 0;
     top: 0;
-    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 101;
     height: 100%;
-    border: 0px solid #ffffff;
-    z-index: 2;
-    opacity: 0;
+    width: 100%;
+    transition: 0.5s;
+  }
+
+  .FileUploader__body {
+    position: absolute;
+    height: 10em;
+    width: 30em;
+    z-index: 1000;
+    background: #d4781af2;
+    animation: fadeIn 0.5s;
+    text-align: center;
+    box-shadow: inset 0px 0px 0px 3px grey;
+    outline: 4px solid white;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+
+    form {
+      width: 25em;
+      margin: 2em auto;
+    }
+  
+    .arrow {
+      position: relative;
+      left: -8px;
+      background: $bgcolor;
+      padding: 8px 15px;
+      &.hover {
+        background: $color;
+      }
+      &:after{
+        right: 100%;
+        top: 50%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        border-color: rgba(32,124,202,0);
+        border-right-color: $bgcolor;
+        border-width: 10px;
+        margin-top: -10px;
+      }
+      &.hover:after {
+        border-right-color: $color;
+      }
+    }
+  
+    input[type=text] {
+      padding:8px 15px;
+      color: #101010;
+      background:rgba(50, 50, 50, 0.2);
+      border:0px solid #dbdbdb;
+      width: 15em;
+      &::-webkit-input-placeholder {
+        font-family: Lato;
+        font-weight: bold;
+      }
+      &:-moz-placeholder {
+        font-family: Lato;
+        font-weight: bold;
+      }
+      &::-moz-placeholder {
+        font-family: Lato;
+        font-weight: bold;
+      }
+      &:-ms-placeholder {
+        font-family: Lato;
+        font-weight: bold;
+      }
+    }
+  
+    button {
+      z-index: 1;
+      width: 5em;
+      position:relative;
+      padding:6px 15px;
+      
+      border:2px solid $bgcolor;
+      background-color:$bgcolor;
+      color: $color;
+      &.hover {
+        background-color: $color;
+        border-color: $color;
+        color: $bgcolor;
+      }
+    }
+    
+    input[type=file] {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 25em;
+      height: 2em;
+      border: 0px solid #ffffff;
+      z-index: 2;
+      opacity: 0;
+    }
+
+    .FileUploader__actions {
+      position: relative;
+      top: 2em;
+
+      button {
+        margin: 0 1.5em;
+      }
+    }
   }
 }
