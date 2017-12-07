@@ -8,7 +8,7 @@ function mapStateToProps(state) {
   const { cards } = state.card;
 
   return {
-    cards: _.shuffle(cards, 10),
+    cards: _.chunk(_.shuffle(cards), 10)[0],
     allCards: cards,
   };
 }
