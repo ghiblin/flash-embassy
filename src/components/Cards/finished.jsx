@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Finished = ({ totOk, totFail }) => (
   <div className="card">
@@ -8,5 +9,15 @@ const Finished = ({ totOk, totFail }) => (
     </div>
   </div>
 );
+
+Finished.propTypes = {
+  totOk: PropTypes.number,
+  totFail: PropTypes.number,
+};
+
+Finished.defaultProps = {
+  totOk: 0,
+  totFail: 0,
+};
 
 export default Finished;

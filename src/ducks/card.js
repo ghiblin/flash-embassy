@@ -1,11 +1,12 @@
-import { Observable } from 'rxjs';
+import Rx, { Observable } from 'rxjs';
 import { combineEpics } from 'redux-observable';
 import shortid from 'shortid';
 
 import db from '../utils/db';
 
 const key = 'training';
-
+// eslint-disable-next-line
+window.Rx = Rx;
 db.put({ _id: key, cards: [] })
 // eslint-disable-next-line
   .catch(() => console.log('document already existing'));
@@ -13,6 +14,8 @@ db.put({ _id: key, cards: [] })
 const CARDS_LOAD = 'card/CARDS_LOAD';
 const CARDS_SET = 'card/CARDS_SET';
 const CARDS_ADD = 'card/CARDS_ADD';
+const CARDS_UPDATE = 'card/CARDS_UPDATE';
+const CARDS_SAVE_ALL = 'card/CARDS_SAVE_ALL';
 const CARD_CREATE = 'card/CARD_CREATE';
 const CARD_SAVE = 'card/CARD_SAVE';
 const CARD_DELETE = 'card/CARD_DELETE';
@@ -23,6 +26,7 @@ function doLoadCards() {
 }
 
 function doSetCards(cards) {
+  console.log('doSetCards:', cards);
   return {
     type: CARDS_SET,
     cards,
@@ -43,6 +47,20 @@ function doSaveCard(card) {
       ...card,
       id: card.id || shortid.generate(),
     },
+  };
+}
+
+function doSaveAllCards(cards) {
+  return {
+    type: CARDS_SAVE_ALL,
+    cards,
+  };
+}
+
+function doUpdateCards(cards) {
+  return {
+    type: CARDS_UPDATE,
+    cards,
   };
 }
 
@@ -77,16 +95,33 @@ function createCard(card) {
     }));
 }
 
+function getDoc() {
+  return db.get(key);
+}
+
 function saveCard(card) {
-  return db.get(key)
+  return getDoc()
     .then(doc => db.put({
       ...doc,
       cards: doc.cards.map(el => (el.id === card.id ? card : el)),
     }));
 }
 
+function saveAllCards(cards) {
+  return getDoc()
+    .then(doc => db.put({ ...doc, cards }));
+}
+
+function updateCards(cards) {
+  return getDoc()
+    .then(doc => db.put({
+      ...doc,
+      cards: doc.cards.map(c => cards.find(el => el.id === c.id) || c),
+    }));
+}
+
 function deleteCard(id) {
-  return db.get(key)
+  return getDoc()
     .then(doc => db.put({
       ...doc,
       cards: doc.cards.filter(el => (el.id !== id)),
@@ -107,14 +142,24 @@ const addCardsEpic = action$ =>
       Observable
         .fromPromise(loadCards())
         .map(doc => doc.cards)
-        .map((cards) => {
-          const newCards = [
-            ...cards,
-            ...action.cards.filter(c => cards.filter(compareCard(c)).length === 0),
-          ];
-          console.log('newCards:', newCards);
-          return newCards;
-        }).map(doSetCards));
+        .map(cards => ([
+          ...cards,
+          ...action.cards
+            .filter(c => cards.filter(compareCard(c)).length === 0)
+            .map(({ italian, english, type }) => ({
+              id: shortid.generate(),
+              italian,
+              english,
+              type,
+            })),
+        ]))).map(doSaveAllCards);
+
+const saveAllCardsEpic = action$ =>
+  action$.ofType(CARDS_SAVE_ALL)
+    .mergeMap(action =>
+      Observable
+        .fromPromise(saveAllCards(action.cards))
+        .map(() => doLoadCards()));
 
 const createCardEpic = action$ =>
   action$.ofType(CARD_CREATE)
@@ -129,6 +174,15 @@ const saveCardEpic = action$ =>
       Observable
         .fromPromise(saveCard(action.card))
         .map(doc => (doc.ok ? doLoadCards() : null)));
+
+const updateCardsEpic = action$ => (
+  action$
+    .ofType(CARDS_UPDATE)
+    .mergeMap(action => (
+      Observable.fromPromise(updateCards(action.cards))
+    ))
+    .map(doLoadCards)
+);
 
 const deleteCardEpic = action$ =>
   action$.ofType(CARD_DELETE)
@@ -164,6 +218,7 @@ const actionCreators = {
   doLoadCards,
   doAddCards,
   doSaveCard,
+  doUpdateCards,
   doDeleteCard,
 };
 
@@ -177,6 +232,8 @@ const epics = combineEpics(
   saveCardEpic,
   createCardEpic,
   deleteCardEpic,
+  saveAllCardsEpic,
+  updateCardsEpic,
 );
 
 export {

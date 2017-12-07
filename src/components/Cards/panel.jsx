@@ -1,13 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import _ from 'lodash';
 
 class Panel extends React.Component {
   state = {
     showAnswer: false,
-  }
-
-  toggleAnswer = () => {
-    this.setState({ showAnswer: !this.state.showAnswer });
   }
 
   onClickOk = (e) => {
@@ -22,6 +19,10 @@ class Panel extends React.Component {
     this.props.onFail(this.props.cardNumber);
   }
 
+  toggleAnswer = () => {
+    this.setState({ showAnswer: !this.state.showAnswer });
+  }
+
   generateDots() {
     const times = this.props.cards.length;
     return _.times(times).map((num) => {
@@ -30,9 +31,8 @@ class Panel extends React.Component {
         <span
           key={num}
           className={`card-container__dot fa fa-circle ${dotClass}`}
-          onClick={() => this.setState({ cardNumber: num })}
         />
-      )
+      );
     });
   }
 
@@ -46,22 +46,25 @@ class Panel extends React.Component {
     const contentClass = showAnswer ? 'back' : 'front';
     const actionClass = showAnswer ? 'active' : '';
 
+    // eslint-disable-next-line
+    console.log(`Panel.render numCard:${cardNumber} => ${JSON.stringify(card)}`);
+
     return (
       <div>
-        <div className={`card ${cardClass}`} onClick={ this.toggleAnswer }>
+        <div className={`card ${cardClass}`} onClick={this.toggleAnswer}>
           <span className="card__counter">{ this.props.cardNumber + 1 }</span>
-          <div className="card__flip-card" onClick={ this.toggleAnswer }>
+          <div className="card__flip-card" onClick={this.toggleAnswer}>
             <span className={`fa fa-${iconClass}`} />
           </div>
           <div className={`card__content--${contentClass}`}>
             { content }
           </div>
-          <div className={`card__actions ${actionClass}`}>          
-            <div className="card__button failure" onClick={ this.onClickFail }>
-              <i className="fa fa-thumbs-down" aria-hidden="true"></i>
+          <div className={`card__actions ${actionClass}`}>
+            <div className="card__button failure" onClick={this.onClickFail}>
+              <i className="fa fa-thumbs-down" aria-hidden="true" />
             </div>
-            <div className="card__button success" onClick={ this.onClickOk }>
-              <i className="fa fa-thumbs-up" aria-hidden="true"></i>
+            <div className="card__button success" onClick={this.onClickOk}>
+              <i className="fa fa-thumbs-up" aria-hidden="true" />
             </div>
           </div>
         </div>
@@ -69,7 +72,7 @@ class Panel extends React.Component {
           {this.generateDots()}
         </div>
       </div>
-    )
+    );
   }
 }
 

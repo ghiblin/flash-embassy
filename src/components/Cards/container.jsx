@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Panel from './panel';
-import _ from 'lodash';
 
 import Branch from './branch';
 
@@ -15,28 +14,21 @@ class Container extends React.Component {
 
   start = (e) => {
     e.stopPropagation();
-    this.setState({ status: 'running'});
-  }
-
-  showPrevCard = (e) => {
-    e.stopPropagation();
-    if (this.state.cardNumber > 0) {
-      this.setState({ cardNumber: this.state.cardNumber - 1 });
-    }
+    this.setState({ status: 'running' });
   }
 
   showNextCard() {
     if ((this.state.cardNumber + 1) < this.props.cards.length) {
       this.setState({ cardNumber: this.state.cardNumber + 1 });
     } else {
+      this.props.onFinish(this.props.cards);
       this.setState({ status: 'finished' });
     }
   }
-  
+
   incOK = (cardNumber) => {
     const card = this.props.cards[cardNumber];
     card.ok = (card.ok || 0) + 1;
-    this.props.saveCard(card);
     this.setState({ totOk: this.state.totOk + 1 });
     this.showNextCard();
   }
@@ -44,7 +36,6 @@ class Container extends React.Component {
   incFail = (cardNumber) => {
     const card = this.props.cards[cardNumber];
     card.fail = (card.fail || 0) + 1;
-    this.props.saveCard(card);
     this.setState({ totFail: this.state.totFail + 1 });
     this.showNextCard();
   }
@@ -52,18 +43,18 @@ class Container extends React.Component {
   generateCards() {
     const { cards } = this.props;
     const { cardNumber } = this.state;
-    return cards
-      .filter((el, i) => i === cardNumber)
-      .map((card, i) => (
-        <Panel
-          key={i}
-          frontContent={card.italian}
-          backContent={card.english}
-          onSuccess={ this.incOK }
-          onFail={ this.incFail }
-          cardNumber={cardNumber}
-        />
-      ));
+    const card = cards[cardNumber];
+
+    return (
+      <Panel
+        key={card.id}
+        frontContent={card.italian}
+        backContent={card.english}
+        onSuccess={this.incOK}
+        onFail={this.incFail}
+        cardNumber={cardNumber}
+      />
+    );
   }
 
   render() {
@@ -78,16 +69,6 @@ class Container extends React.Component {
         {...this.state}
       />
     );
-    /*
-    return (
-      <div>
-        { this.generateCards() }
-        <div className="card-container__dots-wrapper">
-          { this.generateDots() }
-        </div>
-      </div>
-    );
-    */
   }
 }
 
@@ -100,7 +81,7 @@ Container.propTypes = {
     ok: PropTypes.number,
     fail: PropTypes.number,
   })).isRequired,
-  saveCard: PropTypes.func.isRequired,
-}
+  onFinish: PropTypes.func.isRequired,
+};
 
 export default Container;
