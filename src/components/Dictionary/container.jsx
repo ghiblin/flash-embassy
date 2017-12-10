@@ -15,27 +15,25 @@ function getShortType(type) {
 }
 
 const Container = ({ cards, deleteCard, editCard }) => (
-  <div>
-    <ul className="card__list">
-      {
-        cards
-          .map((el, i) => (
-            <li key={el.id} onClick={() => editCard(el.id)}>
-              {getShortType(el.type)} {el.italian} - {el.english}
-              <span
-                className="card__destroy"
-                onClick={(evt) => {
-                  evt.stopPropagation();
-                  deleteCard(el.id);
-                }}
-              >
-                <i className="fa fa-times-circle" aria-hidden="true" />
-              </span>
-            </li>
-          ))
-      }
-    </ul>
-  </div>
+  <ul className="card__list">
+    {
+      cards
+        .map((el, i) => (
+          <li key={el.id} onClick={() => editCard(el.id)}>
+            {getShortType(el.type)} {el.italian} - {el.english}
+            <span
+              className="card__destroy"
+              onClick={(evt) => {
+                evt.stopPropagation();
+                deleteCard(el.id);
+              }}
+            >
+              <i className="fa fa-times-circle" aria-hidden="true" />
+            </span>
+          </li>
+        ))
+    }
+  </ul>
 );
 
 Container.propTypes = {

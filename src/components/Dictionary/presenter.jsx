@@ -119,8 +119,8 @@ export default class Presenter extends React.Component {
           title={<span><i className="fa fa-book" aria-hidden="true" />&nbsp;Dictionary</span>}
           buttons={[
             <SearchBar searchTerm={searchTerm} onInputChange={this.filterList} />,
-            <IconButton icon="upload" onClick={this.showUploadForm} />,
-            <IconButton icon="download" onClick={this.downloadCards} />,
+            <IconButton className="upload" icon="upload" onClick={this.showUploadForm} />,
+            <IconButton className="download" icon="download" onClick={this.downloadCards} />,
             <IconButton icon="plus" onClick={() => this.openModal()} />,
           ]}
         />

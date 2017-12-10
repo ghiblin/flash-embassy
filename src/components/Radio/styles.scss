@@ -1,0 +1,38 @@
+.RadioBox {
+  input[type=radio] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    height: 1.5em;
+    width: 1.5em;
+    background: #cbd1d8;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 0.5em;
+
+    &:hover {
+      background: #9faab7;
+    }
+    &:checked {
+      background: #642305;
+    }
+    &:checked:before {
+      content: '✔';
+      position: absolute;
+      height: 1.5em;
+      width: 1.5em;
+      line-height: 1.5em;
+      text-align: center;
+    }
+  }
+
+  label {
+    text-transform: uppercase;
+    line-height: 1.5em;
+  }
+}

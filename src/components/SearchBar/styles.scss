@@ -1,5 +1,8 @@
 .SearchBox {
   width: 250px;
+  @media (max-width: 600px) {
+    width: 150px;
+  }
   vertical-align: middle;
   white-space: nowrap;
   position: relative;
@@ -14,6 +17,9 @@
 
   input {
     width: 204px;
+    @media(max-width: 600px) {
+      width: 104px;
+    }
     height: 38px;
     background: #ffffff; // #2b303b;
     border: none;

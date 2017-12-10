@@ -25,4 +25,13 @@
     text-align: center;
     vertical-align: bottom;
   }
+
+  @media(max-width: 600px) {
+    &.upload {
+      visibility: hidden;
+    }
+    &.download {
+      visibility: hidden;
+    }
+  }
 }

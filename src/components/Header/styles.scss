@@ -1,0 +1,42 @@
+$header-color: #666666;
+
+.header {
+  background: white;
+  // box-shadow: 7px 7px 22px lightgray;
+  // padding: 1em 0em;
+  display: flex;
+  align-items: center;
+  height: 3em;
+  color: $header-color;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+
+.header-content {
+  width: 33.33%;
+  display: flex;
+  justify-content: center;
+  font-weight: 400;
+  
+  span {
+    font-size: 1.3em;
+    cursor: pointer
+  }
+}
+
+.header-content__right {
+  justify-content: flex-end;
+   z-index: 11;
+  span {
+    margin-right: 1em;
+  }
+}
+
+.header-content__left {
+  justify-content: flex-start;
+  
+  span {
+    margin-left: 1em;
+  }
+}

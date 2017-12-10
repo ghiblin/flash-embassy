@@ -7,20 +7,20 @@ class Panel extends React.Component {
     showAnswer: false,
   }
 
-  onClickOk = (e) => {
-    e.stopPropagation();
+  toggleAnswer = () => {
+    this.setState({ showAnswer: !this.state.showAnswer });
+  }
+
+  handleOk = (evt) => {
+    evt.stopPropagation();
     this.toggleAnswer();
     this.props.onSuccess(this.props.cardNumber);
   }
 
-  onClickFail = (e) => {
-    e.stopPropagation();
+  handleFail = (evt) => {
+    evt.stopPropagation();
     this.toggleAnswer();
     this.props.onFail(this.props.cardNumber);
-  }
-
-  toggleAnswer = () => {
-    this.setState({ showAnswer: !this.state.showAnswer });
   }
 
   generateDots() {
@@ -47,10 +47,10 @@ class Panel extends React.Component {
     const actionClass = showAnswer ? 'active' : '';
 
     // eslint-disable-next-line
-    console.log(`Panel.render numCard:${cardNumber} => ${JSON.stringify(card)}`);
+    console.log(`Panel.render ${showAnswer} numCard:${cardNumber} => ${JSON.stringify(card)}`);
 
     return (
-      <div>
+      <div className="card__panel">
         <div className={`card ${cardClass}`} onClick={this.toggleAnswer}>
           <span className="card__counter">{ this.props.cardNumber + 1 }</span>
           <div className="card__flip-card" onClick={this.toggleAnswer}>
@@ -60,10 +60,10 @@ class Panel extends React.Component {
             { content }
           </div>
           <div className={`card__actions ${actionClass}`}>
-            <div className="card__button failure" onClick={this.onClickFail}>
+            <div className="card__button failure" onClick={this.handleFail}>
               <i className="fa fa-thumbs-down" aria-hidden="true" />
             </div>
-            <div className="card__button success" onClick={this.onClickOk}>
+            <div className="card__button success" onClick={this.handleOk}>
               <i className="fa fa-thumbs-up" aria-hidden="true" />
             </div>
           </div>

@@ -89,37 +89,44 @@ class Form extends React.Component {
               onChange={this.onInputChange}
             />
             <br />
-            <RadioGroup name="type" selectedValue={type} onChange={this.onRadioChange}>
-              <label>
+            <RadioGroup
+              className="types"
+              name="type"
+              selectedValue={type}
+              onChange={this.onRadioChange}
+            >
+              <label htmlFor="noun">
                 <Radio value="noun" />noun
               </label>
-              <label>
+              <label htmlFor="verb">
                 <Radio value="verb" />verb
               </label>
               <br />
-              <label>
+              <label htmlFor="adjective">
                 <Radio value="adjective" />adjective
               </label>
-              <label>
+              <label htmlFor="adverb">
                 <Radio value="adverb" />adverb
               </label>
               <br />
-              <label>
+              <label htmlFor="conjuction">
                 <Radio value="conjuction" />conjuction
               </label>
-              <label>
+              <label htmlFor="interjuction">
                 <Radio value="interjuction" />interjuction
               </label>
             </RadioGroup>
             <br />
-            <span style={{ marginRight: 10 }}>
-              <b>{ ok }</b>&nbsp;
-              <i className="fa fa-thumbs-up" />
-            </span>
-            <span style={{ marginLeft: 10 }}>
-              <b>{ fail }</b>&nbsp;
-              <i className="fa fa-thumbs-down" />
-            </span>
+            <div className="results">
+              <span style={{ marginRight: 10 }}>
+                <b>{ ok }</b>&nbsp;
+                <i className="fa fa-thumbs-up" />
+              </span>
+              <span style={{ marginLeft: 10 }}>
+                <b>{ fail }</b>&nbsp;
+                <i className="fa fa-thumbs-down" />
+              </span>
+            </div>
             <br />
             <button
               className="create-card__button"
@@ -147,7 +154,7 @@ Form.propTypes = {
   id: PropTypes.string,
   italian: PropTypes.string,
   english: PropTypes.string,
-  type: PropTypes.oneOf(['noun', 'verb', 'adjective', 'adverb', 'conjunction', 'interjuction']),
+  type: PropTypes.string,
   ok: PropTypes.number,
   fail: PropTypes.number,
   saveCard: PropTypes.func.isRequired,
@@ -157,6 +164,7 @@ Form.propTypes = {
 Form.defaultProps = {
   italian: '',
   english: '',
+  type: 'noum',
   ok: 0,
   fail: 0,
 };
