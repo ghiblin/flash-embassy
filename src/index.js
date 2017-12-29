@@ -30,6 +30,6 @@ ready(function () {
         { renderRoutes(routes) }
       </ConnectedRouter>
     </Provider>,
-    document.getElementById('content')
+    document.getElementById('root-app')
   );
 });
