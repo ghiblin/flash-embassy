@@ -22,27 +22,31 @@ class Presenter extends React.Component {
     this.setState({ status: 'running' });
   }
 
-  showNextCard() {
+  showNextCard(state) {
     if ((this.state.cardNumber + 1) < this.props.cards.length) {
-      this.setState({ cardNumber: this.state.cardNumber + 1 });
+      this.setState({
+        ...state,
+        cardNumber: this.state.cardNumber + 1,
+      });
     } else {
       this.props.saveCards(this.props.cards);
-      this.setState({ status: 'finished' });
+      this.setState({
+        ...state,
+        status: 'finished',
+      });
     }
   }
 
   incOK = (cardNumber) => {
     const card = this.props.cards[cardNumber];
     card.ok = (card.ok || 0) + 1;
-    this.setState({ totOk: this.state.totOk + 1 });
-    this.showNextCard();
+    this.showNextCard({ totOk: this.state.totOk + 1 });
   }
 
   incFail = (cardNumber) => {
     const card = this.props.cards[cardNumber];
     card.fail = (card.fail || 0) + 1;
-    this.setState({ totFail: this.state.totFail + 1 });
-    this.showNextCard();
+    this.showNextCard({ totFail: this.state.totFail + 1 });
   }
 
   render() {

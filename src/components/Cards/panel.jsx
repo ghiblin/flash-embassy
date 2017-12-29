@@ -2,6 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 
+function stop(event) {
+  event.stopPropagation();
+  event.preventDefault();
+}
+
 class Panel extends React.Component {
   state = {
     showAnswer: false,
@@ -12,13 +17,13 @@ class Panel extends React.Component {
   }
 
   handleOk = (evt) => {
-    evt.stopPropagation();
+    stop(evt);
     this.toggleAnswer();
     this.props.onSuccess(this.props.cardNumber);
   }
 
   handleFail = (evt) => {
-    evt.stopPropagation();
+    stop(evt);
     this.toggleAnswer();
     this.props.onFail(this.props.cardNumber);
   }
@@ -46,9 +51,6 @@ class Panel extends React.Component {
     const contentClass = showAnswer ? 'back' : 'front';
     const actionClass = showAnswer ? 'active' : '';
 
-    // eslint-disable-next-line
-    console.log(`Panel.render ${showAnswer} numCard:${cardNumber} => ${JSON.stringify(card)}`);
-
     return (
       <div className="card__panel">
         <div className={`card ${cardClass}`} onClick={this.toggleAnswer}>
@@ -59,14 +61,18 @@ class Panel extends React.Component {
           <div className={`card__content--${contentClass}`}>
             { content }
           </div>
-          <div className={`card__actions ${actionClass}`}>
-            <div className="card__button failure" onClick={this.handleFail}>
-              <i className="fa fa-thumbs-down" aria-hidden="true" />
-            </div>
-            <div className="card__button success" onClick={this.handleOk}>
-              <i className="fa fa-thumbs-up" aria-hidden="true" />
-            </div>
-          </div>
+          {
+            showAnswer ?
+              <div className={`card__actions ${actionClass}`}>
+                <div className="card__button failure" onClick={this.handleFail}>
+                  <i className="fa fa-thumbs-down" aria-hidden="true" />
+                </div>
+                <div className="card__button success" onClick={this.handleOk}>
+                  <i className="fa fa-thumbs-up" aria-hidden="true" />
+                </div>
+              </div>
+              : null
+          }
         </div>
         <div className="card-container__dots-wrapper">
           {this.generateDots()}

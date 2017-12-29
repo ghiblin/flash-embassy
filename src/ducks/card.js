@@ -26,7 +26,6 @@ function doLoadCards() {
 }
 
 function doSetCards(cards) {
-  console.log('doSetCards:', cards);
   return {
     type: CARDS_SET,
     cards,

@@ -16,11 +16,20 @@ import './utils/db';
 const history = createHistory();
 const store = configureStore(history);
 
-ReactDOM.render(
-  <Provider store={store}>
-    <ConnectedRouter history={history}>
-      { renderRoutes(routes) }
-    </ConnectedRouter>
-  </Provider>,
-  document.getElementById('content')
-);
+function ready(loadApp) {
+  if (document.attachEvent ? document.readyState === 'complete' : document.readyState !== 'loading') {
+    loadApp();
+  } else {
+    document.addEventListener('DOMContentLoaded', loadApp);
+  }
+}
+ready(function () {
+  ReactDOM.render(
+    <Provider store={store}>
+      <ConnectedRouter history={history}>
+        { renderRoutes(routes) }
+      </ConnectedRouter>
+    </Provider>,
+    document.getElementById('content')
+  );
+});
