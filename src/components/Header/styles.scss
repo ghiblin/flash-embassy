@@ -33,10 +33,17 @@ $header-color: #666666;
   }
 }
 
+@media(max-width:1200px) {
+  & .header-content__middle .title {
+    display: none;
+  }
+
 .header-content__left {
   justify-content: flex-start;
   
   span {
     margin-left: 1em;
   }
+}
+
 }

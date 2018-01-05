@@ -16,7 +16,7 @@ const Header = ({ showHome, title, buttons }) => (
       }
     </div>
     <div className="header-content header-content__middle">
-      { title }
+      <span className="title">{ title }</span>
     </div>
     <div className="header-content header-content__right">
       {
