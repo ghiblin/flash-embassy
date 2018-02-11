@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+
 import './container.scss';
 
 function getShortType(type) {
@@ -19,8 +21,10 @@ const Container = ({ cards, deleteCard, editCard }) => (
     {
       cards
         .map((el, i) => (
-          <li key={el.id} onClick={() => editCard(el.id)}>
-            {getShortType(el.type)} {el.italian} - {el.english}
+          <li key={el.id}>
+            <Link to={`/dictionary/${el.id}`}>
+              {getShortType(el.type)} {el.italian} - {el.english}
+            </Link>
             <span
               className="card__destroy"
               onClick={(evt) => {
@@ -43,7 +47,6 @@ Container.propTypes = {
     type: PropTypes.string,
   })),
   deleteCard: PropTypes.func.isRequired,
-  editCard: PropTypes.func.isRequired,
 };
 
 Container.defaultProps = {

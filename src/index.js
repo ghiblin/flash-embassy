@@ -6,10 +6,11 @@ import './style.scss';
 
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
-import { renderRoutes } from 'react-router-config';
+// import { renderRoutes } from 'react-router-config';
 import createHistory from 'history/createHashHistory';
 import configureStore from './stores/configureStore';
-import routes from './routes';
+import App from './components/App';
+// import routes from './routes';
 
 import './utils/db';
 
@@ -27,7 +28,7 @@ ready(function () {
   ReactDOM.render(
     <Provider store={store}>
       <ConnectedRouter history={history}>
-        { renderRoutes(routes) }
+        <App />
       </ConnectedRouter>
     </Provider>,
     document.getElementById('root-app')

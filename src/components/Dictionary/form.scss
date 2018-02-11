@@ -2,7 +2,7 @@
   bottom: 0;
   left: 0;
   //position: fixed;
-  position: absolute;
+  //position: absolute;
   right: 0;
   top: 0;
   z-index: 10;
@@ -122,7 +122,7 @@
   }
 
   .create-card__error {
-    color: tomato;
+    color: black;
     margin-top: 0.5em;
   }
 }

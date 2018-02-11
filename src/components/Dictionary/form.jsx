@@ -128,11 +128,14 @@ class Form extends React.Component {
               </span>
             </div>
             <br />
+            <div className="create-card__error">
+              { errorMessage }
+            </div>
             <button
               className="create-card__button"
               onClick={this.submitForm}
             >
-              {(id >= 0) ? 'Save!' : 'Create!'}
+              {isNew ? 'Create!' : 'Save!'}
             </button>&nbsp;
             <button
               className="create-card__button"
@@ -140,9 +143,6 @@ class Form extends React.Component {
             >
               Cancel
             </button>
-            <div className="create-card__error">
-              { errorMessage }
-            </div>
           </div>
         </div>
       </div>

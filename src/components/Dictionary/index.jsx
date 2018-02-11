@@ -1,5 +1,6 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 import { actionCreators as cardActionCreators } from '../../ducks/card';
 import Cards from './presenter';
 
@@ -16,6 +17,8 @@ function mapDispatchToProps(dispatch) {
     addCards: bindActionCreators(cardActionCreators.doAddCards, dispatch),
     saveCard: bindActionCreators(cardActionCreators.doSaveCard, dispatch),
     deleteCard: bindActionCreators(cardActionCreators.doDeleteCard, dispatch),
+    newCard: () => dispatch(push('/dictionary/new')),
+    uploadCards: () => dispatch(push('/dictionary/upload')),
   };
 }
 

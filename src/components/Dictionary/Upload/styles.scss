@@ -4,14 +4,14 @@ $color: #fafafa;
 .FileUploader {
   bottom: 0;
   left: 0;
-  position: fixed;
+  //position: fixed;
   right: 0;
   top: 0;
   z-index: 10;
   display: flex;
   justify-content: center;
   align-items: center;
-
+/*
   .FileUploader__shadow {
     bottom: 0;
     left: 0;
@@ -24,7 +24,7 @@ $color: #fafafa;
     width: 100%;
     transition: 0.5s;
   }
-
+*/
   .FileUploader__body {
     position: absolute;
     height: 10em;
