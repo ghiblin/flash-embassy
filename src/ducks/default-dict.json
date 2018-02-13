@@ -1,0 +1,502 @@
+[
+	{
+		"italian": "Chiedere",
+		"english": "Ask",
+		"type": "verb"
+	},
+	{
+		"italian": "Essere",
+		"english": "Be",
+		"type": "verb"
+	},
+	{
+		"italian": "Diventare",
+		"english": "Become",
+		"type": "verb"
+	},
+	{
+		"italian": "Iniziare",
+		"english": "Begin",
+		"type": "verb"
+	},
+	{
+		"italian": "Chiamare",
+		"english": "Call",
+		"type": "verb"
+	},
+	{
+		"italian": "Potere",
+		"english": "Can",
+		"type": "verb"
+	},
+	{
+		"italian": "Venire",
+		"english": "Come",
+		"type": "verb"
+	},
+	{
+		"italian": "Chiudere",
+		"english": "Close",
+		"type": "verb"
+	},
+	{
+		"italian": "Fare",
+		"english": "Do",
+		"type": "verb"
+	},
+	{
+		"italian": "Sentire/Provare",
+		"english": "Feel",
+		"type": "verb"
+	},
+	{
+		"italian": "Trovare",
+		"english": "Find",
+		"type": "verb"
+	},
+	{
+		"italian": "Ottenere",
+		"english": "Get",
+		"type": "verb"
+	},
+	{
+		"italian": "Dare",
+		"english": "Give",
+		"type": "verb"
+	},
+	{
+		"italian": "Andare",
+		"english": "Go",
+		"type": "verb"
+	},
+	{
+		"italian": "Avere",
+		"english": "Have",
+		"type": "verb"
+	},
+	{
+		"italian": "Sentire/Udire",
+		"english": "Hear",
+		"type": "verb"
+	},
+	{
+		"italian": "Aiutare",
+		"english": "Help",
+		"type": "verb"
+	},
+	{
+		"italian": "Conservare",
+		"english": "Keep",
+		"type": "verb"
+	},
+	{
+		"italian": "Conoscere",
+		"english": "Know",
+		"type": "verb"
+	},
+	{
+		"italian": "Lasciare/Partire",
+		"english": "Leave",
+		"type": "verb"
+	},
+	{
+		"italian": "Permettere",
+		"english": "Let",
+		"type": "verb"
+	},
+	{
+		"italian": "Piacere",
+		"english": "Like",
+		"type": "verb"
+	},
+	{
+		"italian": "Vivere",
+		"english": "Live",
+		"type": "verb"
+	},
+	{
+		"italian": "Guardare",
+		"english": "Look",
+		"type": "verb"
+	},
+	{
+		"italian": "Rendere",
+		"english": "Make",
+		"type": "verb"
+	},
+	{
+		"italian": "Muovere",
+		"english": "Move",
+		"type": "verb"
+	},
+	{
+		"italian": "Significare",
+		"english": "Mean",
+		"type": "verb"
+	},
+	{
+		"italian": "Mischiare",
+		"english": "Mix",
+		"type": "verb"
+	},
+	{
+		"italian": "Ascoltare",
+		"english": "Listen",
+		"type": "verb"
+	},
+	{
+		"italian": "Aver Bisogno",
+		"english": "Need",
+		"type": "verb"
+	},
+	{
+		"italian": "Giocare/Suonare",
+		"english": "Play",
+		"type": "verb"
+	},
+	{
+		"italian": "Mettere",
+		"english": "Put",
+		"type": "verb"
+	},
+	{
+		"italian": "Correre",
+		"english": "Run",
+		"type": "verb"
+	},
+	{
+		"italian": "Dire",
+		"english": "Say",
+		"type": "verb"
+	},
+	{
+		"italian": "Vedere",
+		"english": "See",
+		"type": "verb"
+	},
+	{
+		"italian": "Sembrare",
+		"english": "Seem",
+		"type": "verb"
+	},
+	{
+		"italian": "Gridare",
+		"english": "Shout",
+		"type": "verb"
+	},
+	{
+		"italian": "Mostrare",
+		"english": "Show",
+		"type": "verb"
+	},
+	{
+		"italian": "Iniziare",
+		"english": "Start",
+		"type": "verb"
+	},
+	{
+		"italian": "Prendere",
+		"english": "Take",
+		"type": "verb"
+	},
+	{
+		"italian": "Parlare",
+		"english": "Talk",
+		"type": "verb"
+	},
+	{
+		"italian": "Raccontare",
+		"english": "Tell",
+		"type": "verb"
+	},
+	{
+		"italian": "Pensare",
+		"english": "Think",
+		"type": "verb"
+	},
+	{
+		"italian": "Provare",
+		"english": "Try",
+		"type": "verb"
+	},
+	{
+		"italian": "Girarsi",
+		"english": "Turn",
+		"type": "verb"
+	},
+	{
+		"italian": "Usare",
+		"english": "Use",
+		"type": "verb"
+	},
+	{
+		"italian": "Volere",
+		"english": "Want",
+		"type": "verb"
+	},
+	{
+		"italian": "Osservare",
+		"english": "Watch",
+		"type": "verb"
+	},
+	{
+		"italian": "Lavorare",
+		"english": "Work",
+		"type": "verb"
+	},
+	{
+		"italian": "Lavare",
+		"english": "Wash",
+		"type": "verb"
+	},
+	{
+		"italian": "Capace",
+		"english": "Able",
+		"type": "adjective"
+	},
+	{
+		"italian": "Cattivo",
+		"english": "Bad",
+		"type": "adjective"
+	},
+	{
+		"italian": "Migliore",
+		"english": "Best",
+		"type": "adjective"
+	},
+	{
+		"italian": "Migliore",
+		"english": "Better",
+		"type": "adjective"
+	},
+	{
+		"italian": "Grande",
+		"english": "Big",
+		"type": "adjective"
+	},
+	{
+		"italian": "Nero",
+		"english": "Black",
+		"type": "adjective"
+	},
+	{
+		"italian": "Certo",
+		"english": "Certain",
+		"type": "adjective"
+	},
+	{
+		"italian": "Chiaro",
+		"english": "Clear",
+		"type": "adjective"
+	},
+	{
+		"italian": "Diverso",
+		"english": "Different",
+		"type": "adjective"
+	},
+	{
+		"italian": "Presto",
+		"english": "Early",
+		"type": "adjective"
+	},
+	{
+		"italian": "Facile",
+		"english": "Easy",
+		"type": "adjective"
+	},
+	{
+		"italian": "Economico",
+		"english": "Economic",
+		"type": "adjective"
+	},
+	{
+		"italian": "Privato",
+		"english": "Private",
+		"type": "adjective"
+	},
+	{
+		"italian": "Gratuito",
+		"english": "Free",
+		"type": "adjective"
+	},
+	{
+		"italian": "Pieno",
+		"english": "Full",
+		"type": "adjective"
+	},
+	{
+		"italian": "Buona",
+		"english": "Good",
+		"type": "adjective"
+	},
+	{
+		"italian": "Grande",
+		"english": "Great",
+		"type": "adjective"
+	},
+	{
+		"italian": "Difficile/Duro",
+		"english": "Hard",
+		"type": "adjective"
+	},
+	{
+		"italian": "Alto",
+		"english": "High",
+		"type": "adjective"
+	},
+	{
+		"italian": "Umano",
+		"english": "Human",
+		"type": "adjective"
+	},
+	{
+		"italian": "Importante",
+		"english": "Important",
+		"type": "adjective"
+	},
+	{
+		"italian": "Internazionale",
+		"english": "International",
+		"type": "adjective"
+	},
+	{
+		"italian": "Grande",
+		"english": "Large",
+		"type": "adjective"
+	},
+	{
+		"italian": "In Ritardo",
+		"english": "Late",
+		"type": "adjective"
+	},
+	{
+		"italian": "Piccolo",
+		"english": "Little",
+		"type": "adjective"
+	},
+	{
+		"italian": "Locale",
+		"english": "Local",
+		"type": "adjective"
+	},
+	{
+		"italian": "Lungo",
+		"english": "Long",
+		"type": "adjective"
+	},
+	{
+		"italian": "Basso",
+		"english": "Low",
+		"type": "adjective"
+	},
+	{
+		"italian": "Falso",
+		"english": "0",
+		"type": "adjective"
+	},
+	{
+		"italian": "Militare",
+		"english": "Military",
+		"type": "adjective"
+	},
+	{
+		"italian": "Nazionale",
+		"english": "National",
+		"type": "adjective"
+	},
+	{
+		"italian": "Nuovo",
+		"english": "New",
+		"type": "adjective"
+	},
+	{
+		"italian": "Vecchio",
+		"english": "Old",
+		"type": "adjective"
+	},
+	{
+		"italian": "Solo",
+		"english": "Only",
+		"type": "adjective"
+	},
+	{
+		"italian": "Altro",
+		"english": "Other",
+		"type": "adjective"
+	},
+	{
+		"italian": "Sinistra",
+		"english": "Left",
+		"type": "adjective"
+	},
+	{
+		"italian": "Possibile",
+		"english": "Possible",
+		"type": "adjective"
+	},
+	{
+		"italian": "Pubblico",
+		"english": "Public",
+		"type": "adjective"
+	},
+	{
+		"italian": "Vero",
+		"english": "Real",
+		"type": "adjective"
+	},
+	{
+		"italian": "Recente",
+		"english": "Recent",
+		"type": "adjective"
+	},
+	{
+		"italian": "Destra",
+		"english": "Right",
+		"type": "adjective"
+	},
+	{
+		"italian": "Piccolo",
+		"english": "Small",
+		"type": "adjective"
+	},
+	{
+		"italian": "Sociale",
+		"english": "Social",
+		"type": "adjective"
+	},
+	{
+		"italian": "Speciale",
+		"english": "Special",
+		"type": "adjective"
+	},
+	{
+		"italian": "Forte",
+		"english": "Strong",
+		"type": "adjective"
+	},
+	{
+		"italian": "Sicuro",
+		"english": "Sure",
+		"type": "adjective"
+	},
+	{
+		"italian": "Vero",
+		"english": "True",
+		"type": "adjective"
+	},
+	{
+		"italian": "Bianca",
+		"english": "White",
+		"type": "adjective"
+	},
+	{
+		"italian": "Intero",
+		"english": "Whole",
+		"type": "adjective"
+	},
+	{
+		"italian": "Giovane",
+		"english": "Young",
+		"type": "adjective"
+	}
+]

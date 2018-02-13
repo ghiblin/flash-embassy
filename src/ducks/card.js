@@ -3,13 +3,26 @@ import { combineEpics } from 'redux-observable';
 import shortid from 'shortid';
 
 import db from '../utils/db';
+import defaultDic from './default-dict.json';
 
 const key = 'training';
 // eslint-disable-next-line
 window.Rx = Rx;
+window.defaultDic = defaultDic;
+
+db.put({ 
+  _id: key, 
+  cards: defaultDic.map(c => ({
+    id: shortid.generate(),
+    ...c,
+  }))
+}).catch();
+
+  /*
 db.put({ _id: key, cards: [] })
 // eslint-disable-next-line
   .catch(() => console.log('document already existing'));
+*/
 
 const CARDS_LOAD = 'card/CARDS_LOAD';
 const CARDS_SET = 'card/CARDS_SET';
