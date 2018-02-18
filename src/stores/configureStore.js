@@ -1,3 +1,5 @@
+/* global window */
+/* eslint no-underscore-dangle: 0 */
 import { createStore, applyMiddleware, compose } from 'redux';
 import { createLogger } from 'redux-logger';
 import { createEpicMiddleware, combineEpics } from 'redux-observable';
@@ -14,21 +16,18 @@ export default function configureStore(history, initialState) {
   const router = routerMiddleware(history);
 
   const epicMiddleware = createEpicMiddleware(rootEpic);
-  
+
   const composeEnhancers =
     typeof window === 'object' &&
       window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
       window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
         // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
       }) : compose;
-  
-  const enhancer = composeEnhancers(
-    applyMiddleware(epicMiddleware, router, logger),
-    // other store enhancers if any
-  );
-  
-  //const createStoreWithMiddleware = applyMiddleware(epicMiddleware, router, logger)(createStore);
 
-  //return createStoreWithMiddleware(rootReducer, initialState);
-  return createStore(rootReducer, enhancer);
+  const enhancer = composeEnhancers(applyMiddleware(epicMiddleware, router, logger));
+
+  // const createStoreWithMiddleware = applyMiddleware(epicMiddleware, router, logger)(createStore);
+
+  // return createStoreWithMiddleware(rootReducer, initialState);
+  return createStore(rootReducer, initialState, enhancer);
 }

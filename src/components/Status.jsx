@@ -3,10 +3,11 @@ import { Route } from 'react-router-dom';
 
 export default ({ status, children }) => (
   <Route render={({ staticContext }) => {
-    if (staticContext) {
-      staticContext.status = status;
-    }
+      if (staticContext) {
+        staticContext.status = status;
+      }
 
-    return children;
-  }} />
+      return children;
+    }}
+  />
 );

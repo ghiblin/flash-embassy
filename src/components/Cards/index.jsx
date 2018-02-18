@@ -5,7 +5,11 @@ import { actionCreators as cardActionCreators } from '../../ducks/card';
 import Cards from './presenter';
 
 function ratio(card) {
-  return (card.ok || 0) / ((card.ok || 0) + (card.fail || 0) + 10);
+  const ok = card.ok || 0;
+  const ko = card.fail || 0;
+  const n = ok + ko;
+  const alpha = n < 5 ? 0 : (ok / ko);
+  return alpha * n;
 }
 
 function mapStateToProps(state) {

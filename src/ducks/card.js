@@ -13,7 +13,7 @@ db.put({
     id: shortid.generate(),
     ...c,
   })),
-}).catch();
+}).catch(() => {});
 
 const CARDS_LOAD = 'card/CARDS_LOAD';
 const CARDS_SET = 'card/CARDS_SET';
@@ -77,8 +77,6 @@ function doDeleteCard(id) {
 function loadCards() {
   return db.get(key);
 }
-// eslint-disable-next-line
-window.loadCards = loadCards;
 
 function compareWord(w1, w2) {
   return (w1 || '').toLowerCase() === (w2 || '').toLowerCase();

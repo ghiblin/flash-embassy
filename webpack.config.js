@@ -1,23 +1,23 @@
-var path = require('path');
-var webpack = require('webpack');
+const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   entry: [
     'react-hot-loader/patch',
     'webpack-dev-server/client?http://localhost:8080',
     'webpack/hot/only-dev-server',
-    './src/index.js'
+    './src/index.jsx',
   ],
   module: {
     loaders: [
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        use: ['babel-loader']
+        use: ['babel-loader'],
       },
       {
         test: /\.scss$/,
-        loaders: [ 'style-loader', 'css-loader', 'sass-loader' ],
+        loaders: ['style-loader', 'css-loader', 'sass-loader'],
       },
       // images
       {
@@ -65,10 +65,10 @@ module.exports = {
           options: { limit: 65000, mimetype: 'application/vnd.ms-fontobject' },
         }],
       },
-    ]
+    ],
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'],
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -81,14 +81,14 @@ module.exports = {
   devServer: {
     contentBase: './dist',
     hot: true,
-    historyApiFallback: true
+    historyApiFallback: true,
   },
 
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new webpack.ProvidePlugin({
-      'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
-    })
-  ]
+      fetch: 'imports?this=>global!exports?global.fetch!whatwg-fetch',
+    }),
+  ],
 };
