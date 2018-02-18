@@ -1,18 +1,16 @@
+/* global document */
 import 'rxjs';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import './style.scss';
-
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
-// import { renderRoutes } from 'react-router-config';
 import createHistory from 'history/createHashHistory';
 import configureStore from './stores/configureStore';
 import App from './components/App';
-// import routes from './routes';
 
 import './utils/db';
+import './style.scss';
 
 const history = createHistory();
 const store = configureStore(history);
@@ -24,13 +22,13 @@ function ready(loadApp) {
     document.addEventListener('DOMContentLoaded', loadApp);
   }
 }
-ready(function () {
+ready(() => {
   ReactDOM.render(
     <Provider store={store}>
       <ConnectedRouter history={history}>
         <App />
       </ConnectedRouter>
     </Provider>,
-    document.getElementById('root-app')
+    document.getElementById('root-app'),
   );
 });

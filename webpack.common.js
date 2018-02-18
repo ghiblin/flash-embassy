@@ -1,10 +1,11 @@
+/* eslint import/no-extraneous-dependencies: 0 */
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    app: './src/index.js'
+    app: './src/index.jsx',
   },
   plugins: [
     new CleanWebpackPlugin(['dist']),
@@ -12,8 +13,8 @@ module.exports = {
       title: 'The Embassy Flash Cards',
       template: path.resolve(__dirname, 'src', 'index.html'),
       filename: 'index.html',
-      inject: 'body'
-    })
+      inject: 'body',
+    }),
   ],
   output: {
     filename: '[name].bundle.js',
@@ -25,11 +26,11 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        use: ['babel-loader']
+        use: ['babel-loader'],
       },
       {
         test: /\.scss$/,
-        loaders: [ 'style-loader', 'css-loader', 'sass-loader' ],
+        loaders: ['style-loader', 'css-loader', 'sass-loader'],
       },
       // images
       {
@@ -77,15 +78,15 @@ module.exports = {
           options: { limit: 65000, mimetype: 'application/vnd.ms-fontobject' },
         }],
       },
-    ]
+    ],
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'],
   },
   node: {
     fs: 'empty',
     net: 'empty',
     tls: 'empty',
-    'crypto': 'empty'
+    crypto: 'empty',
   },
 };
