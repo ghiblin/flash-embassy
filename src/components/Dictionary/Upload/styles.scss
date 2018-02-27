@@ -79,6 +79,12 @@ $color: #fafafa;
         font-weight: bold;
       }
     }
+
+    select {
+      width: 25em;
+      height: 2em;
+      margin-top: 0.25em;
+    }
   
     button {
       z-index: 1;
@@ -109,7 +115,7 @@ $color: #fafafa;
 
     .FileUploader__actions {
       position: relative;
-      top: 2em;
+      top: 0.75em;
 
       button {
         margin: 0 1.5em;

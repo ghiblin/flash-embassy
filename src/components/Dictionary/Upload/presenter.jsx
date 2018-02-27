@@ -7,6 +7,7 @@ import './styles.scss';
 class FileUploader extends React.Component {
   state = {
     hover: false,
+    url: '',
   }
 
   onMouseEnter = () => {
@@ -27,26 +28,48 @@ class FileUploader extends React.Component {
     });
   }
 
-  handleUpload = (evt) => {
+  handleOnChange = (evt) => {
     evt.preventDefault();
-    const { file } = this.state;
+    this.setState({
+      url: evt.target.value,
+    });
+  }
+
+  onOk = (evt) => {
+    evt.preventDefault();
+    const { file, url } = this.state;
     if (file) {
-      try {
-        const fr = new FileReader();
-        fr.onload = () => {
-          this.props.upload(JSON.parse(fr.result));
-          this.props.cancel();
-        };
-        fr.onerror = (e) => {
-          // eslint-disable-next-line no-alert
-          alert(`Error reading JSON file. ${e}`);
-        };
-        fr.readAsText(file);
-      } catch (ex) {
-        // eslint-disable-next-line
-        alert('Error parsing JSON file:' + ex);
-      }
+      this.handleUpload(file);
+    } else if (!!url) {
+      this.fetchJSON(url);
     }
+  }
+
+  handleUpload(file) {
+    try {
+      const fr = new FileReader();
+      fr.onload = () => {
+        this.props.upload(JSON.parse(fr.result));
+        this.props.cancel();
+      };
+      fr.onerror = (e) => {
+        // eslint-disable-next-line no-alert
+        alert(`Error reading JSON file. ${e}`);
+      };
+      fr.readAsText(file);
+    } catch (ex) {
+      // eslint-disable-next-line
+      alert('Error parsing JSON file:' + ex);
+    }
+  }
+
+  fetchJSON(url) {
+    fetch(url)
+      .then(res => res.json)
+      .then(this.props.upload)
+      .catch(err => {
+        alert('Error fetching remote json:' + err);
+      });
   }
 
   render() {
@@ -57,20 +80,28 @@ class FileUploader extends React.Component {
       <div className="FileUploader">
         <div className="FileUploader__body">
           <form>
-            <input type="text" placeholder="Choose a file..." value={name} />
-            <span className={`arrow ${hover ? 'hover' : ''}`}>
-              <button className={hover ? 'hover' : ''}>Upload</button>
-            </span>
-            <input
-              type="file"
-              accept=".json"
-              onMouseEnter={this.onMouseEnter}
-              onMouseLeave={this.onMouseLeave}
-              onChange={this.handleFileChange}
-              required
-            />
+            <div className="form-control">
+              <input type="text" placeholder="Choose a file..." value={name} />
+              <span className={`arrow ${hover ? 'hover' : ''}`}>
+                <button className={hover ? 'hover' : ''}>Upload</button>
+              </span>
+              <input
+                type="file"
+                accept=".json"
+                onMouseEnter={this.onMouseEnter}
+                onMouseLeave={this.onMouseLeave}
+                onChange={this.handleFileChange}
+                required
+              />
+            </div>
+            <div className="form-control">
+              <select onChange={this.handleOnChange} value={this.state.url}>
+                <option value="">-- Select one --</option>
+                { this.props.remoteDicts.map((d, i) => <option key={i} value={d.url}>{d.label}</option>) }
+              </select>
+            </div>
             <div className="FileUploader__actions">
-              <button onClick={this.handleUpload}>Ok</button>&nbsp;
+              <button onClick={this.onOk}>Ok</button>&nbsp;
               <button onClick={this.props.cancel}>Cancel</button>
             </div>
           </form>
@@ -83,6 +114,7 @@ class FileUploader extends React.Component {
 FileUploader.propTypes = {
   upload: PropTypes.func.isRequired,
   cancel: PropTypes.func.isRequired,
+  remoteDicts: PropTypes.array.isRequired,
 };
 
 export default FileUploader;

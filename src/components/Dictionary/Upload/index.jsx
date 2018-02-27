@@ -4,6 +4,10 @@ import { push } from 'react-router-redux';
 import { actionCreators as cardActionCreators } from '../../../ducks/card';
 import Form from './presenter';
 
+const mapStateToProps = (state) => ({
+  remoteDicts: state.remoteDicts,
+});
+
 function mapDispatchToProps(dispatch) {
   return {
     upload: bindActionCreators(cardActionCreators.doAddCards, dispatch),
@@ -11,4 +15,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(null, mapDispatchToProps)(Form);
+export default connect(mapStateToProps, mapDispatchToProps)(Form);

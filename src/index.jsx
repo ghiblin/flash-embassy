@@ -13,7 +13,7 @@ import './utils/db';
 import './style.scss';
 
 const history = createHistory();
-const store = configureStore(history);
+const store = configureStore(history, { remoteDicts });
 
 function ready(loadApp) {
   if (document.attachEvent ? document.readyState === 'complete' : document.readyState !== 'loading') {
