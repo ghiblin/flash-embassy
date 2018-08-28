@@ -54,7 +54,7 @@ class Presenter extends React.Component {
 
     return (
       <div className="wrapper">
-        <Header title={<span><i className="fa fa-cog" aria-hidden="true" />&nbsp;Training</span>} />
+        <Header title={<span><i className="fa fa-cog" aria-hidden="true" />&nbsp;M.E.M.O.</span>} />
         <div className="content-wrapper">
           <Branch
             cards={cards}

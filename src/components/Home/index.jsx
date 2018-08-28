@@ -9,7 +9,7 @@ const Home = () => (
       <Link to='/dictionary'>Dictionary</Link>
     </div>
     <div className="link-panel">
-      <Link to='/training'>Training</Link>
+      <Link to='/training'>M.E.M.O.</Link>
     </div>
   </div>
 );

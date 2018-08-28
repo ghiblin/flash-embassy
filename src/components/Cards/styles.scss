@@ -91,10 +91,11 @@ $fail: #d61717;
 
 .card__button {
   cursor: pointer;
-  padding: 0.5em 0.75em;
+  padding: 0 1.5rem;
   color: #444;
   transition: 0.2s;
   border-radius: 5px;
+  font-size: 1.5rem;
   
   &.failure {
     margin-right: 0.5em;
