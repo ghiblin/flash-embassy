@@ -23,6 +23,7 @@ function ready(loadApp) {
   }
 }
 ready(() => {
+console.log('ready...');
   ReactDOM.render(
     <Provider store={store}>
       <ConnectedRouter history={history}>

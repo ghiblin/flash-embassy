@@ -1,105 +1,879 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title><%= htmlWebpackPlugin.options.title %></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato:400,100,300,700,700i,300i,100i,400i">
-    <link rel="stylesheet" type="text/css" href="https://static1.squarespace.com/static/sitecss/5979d65c20099e0bff5ce71d/36/507c1fdf84ae362b5e7be44e/5979d65c20099e0bff5ce724/2132-05142015/1511866782388/site.css?&filterFeatures=false">
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  </head>
-  <body>
-    <div class="outerWrapper">
-      <header id="header">
-        <nav id="mobile-navigation" data-content-field="navigation-mobileNav">
-          <span id="mobile-navigation-label"></span>
-          <ul>
-            <li class=" active-link"><a href="https://www.theembassy.space/">welcome</a></li>
-            <li><a href="https://www.theembassy.space/lezioni/">Lezioni</a></li>
-            <li class="folder">
-              <div class="folder-parent">
-                <a>Esercizi</a>
-                <div class="folder-child-wrapper">
-                  <ul class="folder-child">
-                    <li><a href="https://www.theembassy.space/present-simple/">Present simple</a></li>
-                    <li><a href="https://www.theembassy.space/past-simple-regular/">Present continuous</a></li>
-                    <li><a href="https://www.theembassy.space/past-simple/">Past simple regular</a></li>
-                    <li><a href="https://www.theembassy.space/past-simple-regular-1/">Past simple irregular</a></li>
-                    <li><a href="https://www.theembassy.space/past-continuous/">Past continuous</a></li>
-                    <li><a href="https://www.theembassy.space/future/">Future</a></li>
-                  </ul>
-                </div>
-              </div>
-            </li>
-            <li><a href="https://www.theembassy.space/teams/">Teams</a></li>
-            <li><a href="https://www.theembassy.space/dove-siamo/">dove siamo</a></li>
-            <li><a href="https://www.theembassy.space/area-studenti/">Area Ambasciatori</a></li>
-          </ul>
-        </nav>
-        <nav id="main-navigation" data-content-field="navigation-mainNav">
-          <ul class="cf">
-            <li class=" active-link"><a href="https://www.theembassy.space/">welcome</a></li>
-            <li><a href="https://www.theembassy.space/lezioni/">Lezioni</a></li>
-            <li class="folder">
-              <div class="folder-parent">
-                <a aria-haspopup="true">Esercizi</a>
-                <div class="folder-child-wrapper">
-                  <ul class="folder-child">
-                    <li><a href="https://www.theembassy.space/present-simple/">Present simple</a></li>
-                    <li><a href="https://www.theembassy.space/past-simple-regular/">Present continuous</a></li>
-                    <li><a href="https://www.theembassy.space/past-simple/">Past simple regular</a></li>
-                    <li><a href="https://www.theembassy.space/past-simple-regular-1/">Past simple irregular</a></li>
-                    <li><a href="https://www.theembassy.space/past-continuous/">Past continuous</a></li>
-                    <li><a href="https://www.theembassy.space/future/">Future</a></li>
-                  </ul>
-                </div>
-              </div>
-            </li>
-            <li><a href="https://www.theembassy.space/teams/">Teams</a></li>
-            <li><a href="https://www.theembassy.space/dove-siamo/">dove siamo</a></li>
-            <li><a href="https://www.theembassy.space/area-studenti/">Area Ambasciatori</a></li>
-          </ul>
-        </nav>
-        <nav class="social social-links sqs-svg-icon--list" data-content-field="connected-accounts">
-          <ul>
-            <li><a href="http://instagram.com/the_embassy_urgnano" target="_blank" class="sqs-svg-icon--wrapper instagram">
-              <div>
-                <svg class="sqs-svg-icon--social" viewBox="0 0 64 64">
-                  <use class="sqs-use--icon" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#instagram-icon"></use>
-                  <use class="sqs-use--mask" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#instagram-mask"></use>
-                </svg>
-              </div>
-            </a></li>
-            <li><a href="https://www.facebook.com/theembassyschool/" target="_blank" class="sqs-svg-icon--wrapper facebook">
-              <div>
-                <svg class="sqs-svg-icon--social" viewBox="0 0 64 64">
-                  <use class="sqs-use--icon" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#facebook-icon"></use>
-                  <use class="sqs-use--mask" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#facebook-mask"></use>
-                </svg>
-              </div>
-            </a></li>
-          </ul>
-        </nav>
-      </header>
-      <div id="innerWrapper">
-        <div id="title-area">
-          <h1 class="site-title" data-content-field="site-title" data-shrink-original-size="80" style="letter-spacing: 0.025em;">
-            <a href="/">
-              <img class="site-title-image" src="https://static1.squarespace.com/static/5979d65c20099e0bff5ce71d/t/5989c4bf03596e41d8c96603/1511866782391/?format=1500w" alt="The Embassy">
+
+<html class="html" lang="it-IT" itemscope itemtype="http://schema.org/WebPage">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="profile" href="http://gmpg.org/xfn/11">
+
+  <title>PG MEMO &#8211; The M bassy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel='dns-prefetch' href='//s.w.org' />
+  <link rel="alternate" type="application/rss+xml" title="The M bassy &raquo; Feed" href="http://www.thembassy.net/feed/" />
+  <link rel="alternate" type="application/rss+xml" title="The M bassy &raquo; Feed dei commenti" href="http://www.thembassy.net/comments/feed/"
+  />
+  <script type="text/javascript">
+    window._wpemojiSettings = { "baseUrl": "https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\/", "ext": ".png", "svgUrl": "https:\/\/s.w.org\/images\/core\/emoji\/11\/svg\/", "svgExt": ".svg", "source": { "concatemoji": "http:\/\/www.thembassy.net\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.9.8" } };
+    !function (a, b, c) { function d(a, b) { var c = String.fromCharCode; l.clearRect(0, 0, k.width, k.height), l.fillText(c.apply(this, a), 0, 0); var d = k.toDataURL(); l.clearRect(0, 0, k.width, k.height), l.fillText(c.apply(this, b), 0, 0); var e = k.toDataURL(); return d === e } function e(a) { var b; if (!l || !l.fillText) return !1; switch (l.textBaseline = "top", l.font = "600 32px Arial", a) { case "flag": return !(b = d([55356, 56826, 55356, 56819], [55356, 56826, 8203, 55356, 56819])) && (b = d([55356, 57332, 56128, 56423, 56128, 56418, 56128, 56421, 56128, 56430, 56128, 56423, 56128, 56447], [55356, 57332, 8203, 56128, 56423, 8203, 56128, 56418, 8203, 56128, 56421, 8203, 56128, 56430, 8203, 56128, 56423, 8203, 56128, 56447]), !b); case "emoji": return b = d([55358, 56760, 9792, 65039], [55358, 56760, 8203, 9792, 65039]), !b }return !1 } function f(a) { var c = b.createElement("script"); c.src = a, c.defer = c.type = "text/javascript", b.getElementsByTagName("head")[0].appendChild(c) } var g, h, i, j, k = b.createElement("canvas"), l = k.getContext && k.getContext("2d"); for (j = Array("flag", "emoji"), c.supports = { everything: !0, everythingExceptFlag: !0 }, i = 0; i < j.length; i++)c.supports[j[i]] = e(j[i]), c.supports.everything = c.supports.everything && c.supports[j[i]], "flag" !== j[i] && (c.supports.everythingExceptFlag = c.supports.everythingExceptFlag && c.supports[j[i]]); c.supports.everythingExceptFlag = c.supports.everythingExceptFlag && !c.supports.flag, c.DOMReady = !1, c.readyCallback = function () { c.DOMReady = !0 }, c.supports.everything || (h = function () { c.readyCallback() }, b.addEventListener ? (b.addEventListener("DOMContentLoaded", h, !1), a.addEventListener("load", h, !1)) : (a.attachEvent("onload", h), b.attachEvent("onreadystatechange", function () { "complete" === b.readyState && c.readyCallback() })), g = c.source || {}, g.concatemoji ? f(g.concatemoji) : g.wpemoji && g.twemoji && (f(g.twemoji), f(g.wpemoji))) }(window, document, window._wpemojiSettings);
+  </script>
+  <style type="text/css">
+    img.wp-smiley,
+    img.emoji {
+      display: inline !important;
+      border: none !important;
+      box-shadow: none !important;
+      height: 1em !important;
+      width: 1em !important;
+      margin: 0 .07em !important;
+      vertical-align: -0.1em !important;
+      background: none !important;
+      padding: 0 !important;
+    }
+  </style>
+  <link rel='stylesheet' id='BNSAW-Style-css' href='http://www.thembassy.net/wp-content/plugins/bns-add-widget/bnsaw-style.css?ver=1.0'
+    type='text/css' media='screen' />
+  <link rel='stylesheet' id='contact-form-7-css' href='http://www.thembassy.net/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=5.0.4'
+    type='text/css' media='all' />
+  <link rel='stylesheet' id='font-awesome-css' href='http://www.thembassy.net/wp-content/themes/oceanwp/assets/css/third/font-awesome.min.css?ver=4.7.0'
+    type='text/css' media='all' />
+  <link rel='stylesheet' id='simple-line-icons-css' href='http://www.thembassy.net/wp-content/themes/oceanwp/assets/css/third/simple-line-icons.min.css?ver=2.4.0'
+    type='text/css' media='all' />
+  <link rel='stylesheet' id='magnific-popup-css' href='http://www.thembassy.net/wp-content/themes/oceanwp/assets/css/third/magnific-popup.min.css?ver=1.0.0'
+    type='text/css' media='all' />
+  <link rel='stylesheet' id='slick-css' href='http://www.thembassy.net/wp-content/themes/oceanwp/assets/css/third/slick.min.css?ver=1.6.0'
+    type='text/css' media='all' />
+  <link rel='stylesheet' id='oceanwp-style-css' href='http://www.thembassy.net/wp-content/themes/oceanwp/assets/css/style.min.css?ver=1.5.27'
+    type='text/css' media='all' />
+  <link rel='stylesheet' id='oe-widgets-style-css' href='http://www.thembassy.net/wp-content/plugins/ocean-extra/assets/css/widgets.css?ver=4.9.8'
+    type='text/css' media='all' />
+  <script type='text/javascript' src='http://www.thembassy.net/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+  <script type='text/javascript' src='http://www.thembassy.net/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+  <script type='text/javascript' src='http://www.thembassy.net/wp-content/plugins/ocean-extra//includes/widgets/js/mailchimp.min.js?ver=4.9.8'></script>
+  <script type='text/javascript' src='http://www.thembassy.net/wp-content/plugins/ocean-extra//includes/widgets/js/share.min.js?ver=4.9.8'></script>
+  <link rel='https://api.w.org/' href='http://www.thembassy.net/wp-json/' />
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.thembassy.net/xmlrpc.php?rsd" />
+  <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.thembassy.net/wp-includes/wlwmanifest.xml" />
+  <meta name="generator" content="WordPress 4.9.8" />
+  <link rel="canonical" href="http://www.thembassy.net/pg-memo/" />
+  <link rel='shortlink' href='http://www.thembassy.net/?p=64' />
+  <link rel="alternate" type="application/json+oembed" href="http://www.thembassy.net/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.thembassy.net%2Fpg-memo%2F"
+  />
+  <link rel="alternate" type="text/xml+oembed" href="http://www.thembassy.net/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.thembassy.net%2Fpg-memo%2F&#038;format=xml"
+  />
+  <style type="text/css">
+    .recentcomments a {
+      display: inline !important;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+  </style>
+  <link rel="icon" href="http://www.thembassy.net/wp-content/uploads/2018/08/cropped-New-Logo-1-2-32x32.png" sizes="32x32"
+  />
+  <link rel="icon" href="http://www.thembassy.net/wp-content/uploads/2018/08/cropped-New-Logo-1-2-192x192.png" sizes="192x192"
+  />
+  <link rel="apple-touch-icon-precomposed" href="http://www.thembassy.net/wp-content/uploads/2018/08/cropped-New-Logo-1-2-180x180.png"
+  />
+  <meta name="msapplication-TileImage" content="http://www.thembassy.net/wp-content/uploads/2018/08/cropped-New-Logo-1-2-270x270.png"
+  />
+  <!-- OceanWP CSS -->
+  <style type="text/css">
+    /* General CSS */
+    body,
+    .has-parallax-footer:not(.separate-layout) #main {
+      background-color: #820022
+    }
+
+    body {
+      background-repeat: repeat
+    }
+
+    body {
+      background-size: cover
+    }
+
+    .page-header .page-header-title,
+    .page-header.background-image-page-header .page-header-title {
+      color: #fcfcfc
+    }
+
+    /* Header CSS */
+    #site-logo #site-logo-inner,
+    .oceanwp-social-menu .social-menu-inner,
+    #site-header.full_screen-header .menu-bar-inner,
+    .after-header-content .after-header-content-inner {
+      height: 144px
+    }
+
+    #site-navigation-wrap .dropdown-menu>li>a,
+    .oceanwp-mobile-menu-icon a,
+    .after-header-content-inner>a {
+      line-height: 144px
+    }
+
+    #site-header,
+    .has-transparent-header .is-sticky #site-header,
+    .has-vh-transparent .is-sticky #site-header.vertical-header,
+    #searchform-header-replace {
+      background-color: #560000
+    }
+
+    #site-header {
+      border-color: #2b0000
+    }
+
+    #site-header.has-header-media .overlay-header-media {
+      background-color: rgba(0, 0, 0, 0.5)
+    }
+
+    #site-header #site-logo #site-logo-inner a img,
+    #site-header.center-header #site-navigation-wrap .middle-site-logo a img {
+      max-height: 144px
+    }
+
+    #site-navigation-wrap .dropdown-menu>li>a,
+    .oceanwp-mobile-menu-icon a,
+    #searchform-header-replace-close {
+      color: #ffffff
+    }
+
+    #site-navigation-wrap .dropdown-menu>li>a:hover,
+    .oceanwp-mobile-menu-icon a:hover,
+    #searchform-header-replace-close:hover {
+      color: #00561f
+    }
+
+    @media (max-width:1080px) {
+      #top-bar-nav,
+      #site-navigation-wrap,
+      .oceanwp-social-menu,
+      .after-header-content {
+        display: none
+      }
+      .center-logo #site-logo {
+        float: none;
+        position: absolute;
+        left: 50%;
+        padding: 0;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%)
+      }
+      #site-header.center-header #site-logo,
+      .oceanwp-mobile-menu-icon,
+      #oceanwp-cart-sidebar-wrap {
+        display: block
+      }
+      body.vertical-header-style #outer-wrap {
+        margin: 0 !important
+      }
+      #site-header.vertical-header {
+        position: relative;
+        width: 100%;
+        left: 0 !important;
+        right: 0 !important
+      }
+      #site-header.vertical-header .has-template>#site-logo {
+        display: block
+      }
+      #site-header.vertical-header #site-header-inner {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-align-items: center;
+        align-items: center;
+        padding: 0;
+        max-width: 90%
+      }
+      #site-header.vertical-header #site-header-inner>*:not(.oceanwp-mobile-menu-icon) {
+        display: none
+      }
+      #site-header.vertical-header #site-header-inner>* {
+        padding: 0 !important
+      }
+      #site-header.vertical-header #site-header-inner #site-logo {
+        display: block;
+        margin: 0;
+        width: 50%;
+        text-align: left
+      }
+      body.rtl #site-header.vertical-header #site-header-inner #site-logo {
+        text-align: right
+      }
+      #site-header.vertical-header #site-header-inner .oceanwp-mobile-menu-icon {
+        width: 50%;
+        text-align: right
+      }
+      body.rtl #site-header.vertical-header #site-header-inner .oceanwp-mobile-menu-icon {
+        text-align: left
+      }
+      #site-header.vertical-header .vertical-toggle,
+      body.vertical-header-style.vh-closed #site-header.vertical-header .vertical-toggle {
+        display: none
+      }
+      #site-logo.has-responsive-logo .custom-logo-link {
+        display: none
+      }
+      #site-logo.has-responsive-logo .responsive-logo-link {
+        display: block
+      }
+      .is-sticky #site-logo.has-sticky-logo .responsive-logo-link {
+        display: none
+      }
+      .is-sticky #site-logo.has-responsive-logo .sticky-logo-link {
+        display: block
+      }
+      #top-bar.has-no-content #top-bar-social.top-bar-left,
+      #top-bar.has-no-content #top-bar-social.top-bar-right {
+        position: inherit;
+        left: auto;
+        right: auto;
+        float: none;
+        height: auto;
+        line-height: 1.5em;
+        margin-top: 0;
+        text-align: center
+      }
+      #top-bar.has-no-content #top-bar-social li {
+        float: none;
+        display: inline-block
+      }
+      .owp-cart-overlay,
+      #side-panel-wrap a.side-panel-btn {
+        display: none !important
+      }
+    }
+
+    #mobile-dropdown {
+      max-height: 435px
+    }
+
+    #sidr,
+    #mobile-dropdown {
+      background-color: #846c00
+    }
+
+    #sidr li,
+    #sidr ul,
+    #mobile-dropdown ul li,
+    #mobile-dropdown ul li ul {
+      border-color: rgba(33, 33, 33, 0.035)
+    }
+
+    body .sidr a,
+    body .sidr-class-dropdown-toggle,
+    #mobile-dropdown ul li a,
+    #mobile-dropdown ul li a .dropdown-toggle,
+    #mobile-fullscreen ul li a,
+    #mobile-fullscreen .oceanwp-social-menu.simple-social ul li a {
+      color: #ffffff
+    }
+
+    #mobile-fullscreen a.close .close-icon-inner,
+    #mobile-fullscreen a.close .close-icon-inner::after {
+      background-color: #ffffff
+    }
+
+    /* Typography CSS */
+    #site-navigation-wrap .dropdown-menu>li>a,
+    #site-header.full_screen-header .fs-dropdown-menu>li>a,
+    #site-header.top-header #site-navigation-wrap .dropdown-menu>li>a,
+    #site-header.center-header #site-navigation-wrap .dropdown-menu>li>a,
+    #site-header.medium-header #site-navigation-wrap .dropdown-menu>li>a,
+    .oceanwp-mobile-menu-icon a {
+      font-family: Trebuchet MS;
+      font-weight: 300;
+      text-transform: uppercase
+    }
+  </style>
+</head>
+
+<body class="page-template-default page page-id-64 wp-custom-logo oceanwp-theme dropdown-mobile content-full-width content-max-width page-header-disabled has-breadcrumbs elementor-default">
+
+
+  <div id="outer-wrap" class="site clr">
+
+
+    <div id="wrap" class="clr">
+
+
+
+      <header id="site-header" class="minimal-header clr" data-height="144" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+
+
+
+
+        <div id="site-header-inner" class="clr container">
+
+
+
+
+          <div id="site-logo" class="clr" itemscope itemtype="http://schema.org/Brand">
+
+
+            <div id="site-logo-inner" class="clr">
+
+              <a href="http://www.thembassy.net/" class="custom-logo-link" rel="home" itemprop="url"><img width="808" height="1004"
+                  src="http://www.thembassy.net/wp-content/uploads/2018/08/cropped-Logo-shadow.png" class="custom-logo" alt="The M bassy"
+                  itemprop="logo" srcset="http://www.thembassy.net/wp-content/uploads/2018/08/cropped-Logo-shadow.png 808w, http://www.thembassy.net/wp-content/uploads/2018/08/cropped-Logo-shadow-241x300.png 241w, http://www.thembassy.net/wp-content/uploads/2018/08/cropped-Logo-shadow-768x954.png 768w"
+                  sizes="(max-width: 808px) 100vw, 808px" /></a>
+            </div><!-- #site-logo-inner -->
+
+
+
+          </div><!-- #site-logo -->
+
+          <div id="site-navigation-wrap" class="clr">
+
+
+
+            <nav id="site-navigation" class="navigation main-navigation clr" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+
+              <ul id="menu-area" class="main-menu dropdown-menu sf-menu">
+                <li id="menu-item-313" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-313"><a href="http://www.thembassy.net/" class="menu-link"><span class="text-wrap">welcome</span></a></li>
+                <li
+                  id="menu-item-316" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-316"><a href="http://www.thembassy.net/dove-siamo/" class="menu-link"><span class="text-wrap">dove siamo</span></a></li>
+                <li
+                  id="menu-item-314" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-314"><a href="http://www.thembassy.net/contattaci/" class="menu-link"><span class="text-wrap">Contattaci</span></a></li>
+                <li
+                  id="menu-item-312" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-312"><a href="http://www.thembassy.net/teams/" class="menu-link"><span class="text-wrap">Teams</span></a></li>
+                <li
+                  id="menu-item-450" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-450"><a href="http://www.thembassy.net/log-in/" class="menu-link"><span class="text-wrap"><span class="SentrySquareMenu">Log
+                        In</span></span></a></li>
+              </ul>
+            </nav><!-- #site-navigation -->
+
+
+
+          </div><!-- #site-navigation-wrap -->
+
+
+
+
+          <div class="oceanwp-mobile-menu-icon clr mobile-right">
+
+
+
+
+            <a href="#" class="mobile-menu">
+              <i class="fa fa-bars"></i>
+              <span class="oceanwp-text">Menu</span>
+
+              <span class="oceanwp-close-text">Chiudi</span>
             </a>
-          </h1>
-          <div class="contact-info"></div>
-          <div class="site-desc" data-shrink-original-size="16"><p>Una piattaforma per imparare l'inglese in modo innovativo</p></div>          
+
+
+
+
+          </div><!-- #oceanwp-mobile-menu-navbar -->
+
+
+        </div><!-- #site-header-inner -->
+
+
+        <div id="mobile-dropdown" class="clr">
+
+          <nav class="clr" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+
+            <ul id="menu-area-1" class="menu">
+              <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-313"><a href="http://www.thembassy.net/">welcome</a></li>
+              <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-316"><a href="http://www.thembassy.net/dove-siamo/">dove
+                  siamo</a></li>
+              <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-314"><a href="http://www.thembassy.net/contattaci/">Contattaci</a></li>
+              <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-312"><a href="http://www.thembassy.net/teams/">Teams</a></li>
+              <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-450"><a href="http://www.thembassy.net/log-in/"><span
+                    class="SentrySquareMenu">Log In</span></a></li>
+            </ul>
+            <div id="mobile-menu-search" class="clr">
+              <form method="get" action="http://www.thembassy.net/" class="mobile-searchform">
+                <input type="search" name="s" autocomplete="off" placeholder="Cerca" />
+                <button type="submit" class="searchform-submit">
+                  <i class="icon icon-magnifier"></i>
+                </button>
+              </form>
+            </div><!-- .mobile-menu-search -->
+          </nav>
+
         </div>
-        <section id="content">
-          <div id="root-app"></div>
+
+
+
+
+      </header><!-- #site-header -->
+
+
+
+      <main id="main" class="site-main clr">
+
+
+
+        <div id="content-wrap" class="container clr">
+
+
+          <div id="primary" class="content-area clr">
+
+
+            <div id="content" class="site-content clr">
+
+
+
+              <article class="single-page-article clr">
+
+
+                <div class="entry clr" itemprop="text">
+                  <div id="root-app">LOADING&#8230;</div>
+                </div>
+              </article>
+
+            </div><!-- #content -->
+
+
+          </div><!-- #primary -->
+
+
+
+        </div><!-- #content-wrap -->
+
+
+
+      </main><!-- #main -->
+
+
+
+
+
+      <footer id="footer" class="site-footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+
+
+        <div id="footer-inner" class="clr">
+
+
+
+          <div id="footer-widgets" class="oceanwp-row clr">
+
+
+            <div class="footer-widgets-inner container">
+
+              <div class="footer-box span_1_of_4 col col-1">
+              </div><!-- .footer-one-box -->
+
+              <div class="footer-box span_1_of_4 col col-2">
+                <div id="ttsw_widget-2" class="footer-widget widget_ttsw_widget clr">
+                  <div class="tts_container">
+                    <h4 class="widget-title">Pronunciation</h4><textarea name="ttsw_text" class="ttsw_text" placeholder="Write text which you would like to speak"></textarea><select
+                      class="ttsw_voice"><option value="UK English Female">UK English Female</option>
+                      <option value="UK English Male">UK English Male</option>
+                      <option value="US English Female">US English Female</option>
+                      <option value="Arabic Male">Arabic Male</option>
+                      <option value="Arabic Female">Arabic Female</option>
+                      <option value="Armenian Male">Armenian Male</option>
+                      <option value="Australian Female">Australian Female</option>
+                      <option value="Brazilian Portuguese Female">Brazilian Portuguese Female</option>
+                      <option value="Chinese Female">Chinese Female</option>
+                      <option value="Czech Female">Czech Female</option>
+                      <option value="Danish Female">Danish Female</option>
+                      <option value="Deutsch Female">Deutsch Female</option>
+                      <option value="Dutch Female">Dutch Female</option>
+                      <option value="Finnish Female">Finnish Female</option>
+                      <option value="French Female">French Female</option>
+                      <option value="Greek Female">Greek Female</option>
+                      <option value="Hatian Creole Female">Hatian Creole Female</option>
+                      <option value="Hindi Female">Hindi Female</option>
+                      <option value="Hungarian Female">Hungarian Female</option>
+                      <option value="Indonesian Female">Indonesian Female</option>
+                      <option value="Italian Female">Italian Female</option>
+                      <option value="Japanese Female">Japanese Female</option>
+                      <option value="Korean Female">Korean Female</option>
+                      <option value="Latin Female">Latin Female</option>
+                      <option value="Norwegian Female">Norwegian Female</option>
+                      <option value="Polish Female">Polish Female</option>
+                      <option value="Portuguese Female">Portuguese Female</option>
+                      <option value="Romanian Male">Romanian Male</option>
+                      <option value="Russian Female">Russian Female</option>
+                      <option value="Slovak Female">Slovak Female</option>
+                      <option value="Spanish Female">Spanish Female</option>
+                      <option value="Spanish Latin American Female">Spanish Latin American Female</option>
+                      <option value="Swedish Female">Swedish Female</option>
+                      <option value="Tamil Male">Tamil Male</option>
+                      <option value="Thai Female">Thai Female</option>
+                      <option value="Turkish Female">Turkish Female</option>
+                      <option value="Afrikaans Male">Afrikaans Male</option>
+                      <option value="Albanian Male">Albanian Male</option>
+                      <option value="Bosnian Male">Bosnian Male</option>
+                      <option value="Catalan Male">Catalan Male</option>
+                      <option value="Croatian Male">Croatian Male</option>
+                      <option value="Czech Male">Czech Male</option>
+                      <option value="Danish Male">Danish Male</option>
+                      <option value="Esperanto Male">Esperanto Male</option>
+                      <option value="Finnish Male">Finnish Male</option>
+                      <option value="Greek Male">Greek Male</option>
+                      <option value="Hungarian Male">Hungarian Male</option>
+                      <option value="Icelandic Male">Icelandic Male</option>
+                      <option value="Latin Male">Latin Male</option>
+                      <option value="Latvian Male">Latvian Male</option>
+                      <option value="Macedonian Male">Macedonian Male</option>
+                      <option value="Moldavian Male">Moldavian Male</option>
+                      <option value="Montenegrin Male">Montenegrin Male</option>
+                      <option value="Norwegian Male">Norwegian Male</option>
+                      <option value="Serbian Male">Serbian Male</option>
+                      <option value="Serbo-Croatian Male">Serbo-Croatian Male</option>
+                      <option value="Slovak Male">Slovak Male</option>
+                      <option value="Swahili Male">Swahili Male</option>
+                      <option value="Swedish Male">Swedish Male</option>
+                      <option value="Vietnamese Male">Vietnamese Male</option>
+                      <option value="Welsh Male">Welsh Male</option>
+                      <option value="US English Male">US English Male</option>
+                      <option value="Fallback UK Female">Fallback UK Female</option></select><div class="ttsw_msg"></div><input type="button" class="play" value="🔊 Play"
+                    /><input type="button" class="stop" value="&#9899; Stop" /></div>
+                </div>
+              </div><!-- .footer-one-box -->
+
+              <div class="footer-box span_1_of_4 col col-3 ">
+              </div><!-- .footer-one-box -->
+
+              <div class="footer-box span_1_of_4 col col-4">
+              </div><!-- .footer-box -->
+
+
+            </div><!-- .container -->
+
+
+          </div><!-- #footer-widgets -->
+
+
+
+          <div id="footer-bottom" class="clr no-footer-nav">
+
+
+            <div id="footer-bottom-inner" class="container clr">
+
+
+
+              <div id="copyright" class="clr" role="contentinfo">
+                Copyright - OceanWP Theme by Nick </div><!-- #copyright -->
+
+
+            </div><!-- #footer-bottom-inner -->
+
+
+          </div><!-- #footer-bottom -->
+
+
+        </div><!-- #footer-inner -->
+
+
+      </footer><!-- #footer -->
+
+
+    </div><!-- #wrap -->
+
+
+  </div><!-- #outer-wrap -->
+
+
+
+  <a id="scroll-top" class="scroll-top-right" href="#"><span class="fa fa-angle-up"></span></a>
+
+
+
+
+  <div class="bnsaw-credit">
+
+    <!-- Start - Javascript HTML Text Adder plugin v1.0.1 -->
+    <div class="bns-add-widget">
+      <div id="html_javascript_adder-8" class="widget widget_html_javascript_adder">
+        <div class="hjawidget textwidget">
+
+          <!-- BEGIN SENTRY AJAX LOGIN FORM - "Flat and Fresh" version 1.5 (WordPress Menu Version 2016) - Member Login Code Copyright © Sentrylogin.com, Shawn, Co. https://www.sentrylogin.com -->
+
           <script>
-            var remoteDicts = [
-              { label: 'PrepPlace', url: 'https://matteo-scarpellini-y77j.squarespace.com/s/PrepPlace.json' },
-            ];
+
+            // User Icon Setting (may be set to BLACK, WHITE or NONE):
+
+            iconSetting = "WHITE";
+
+
+            elems = document.querySelectorAll("span.SentrySquareMenu");
+            str1 = "There are " + elems.length + " instances of your item."
+            str2 = elems[0].outerHTML;
+            //alert(str1 + " " + str2);
+
+            if (iconSetting == "BLACK") {
+              iconDr = '<img src="https://www.sentrylogin.com/sentry/images/icon_loginDoor.png" align="absmiddle" alt="Member Login">';
+
+              iconHmbrg = '<img src="https://www.sentrylogin.com/sentry/images/icon_hamburger_black.png" align="absmiddle" alt="Member Area">';
+            }
+            else if (iconSetting == "WHITE") {
+              iconDr = '<img src="https://www.sentrylogin.com/sentry/images/icon_loginDoor_white.png" align="absmiddle" alt="Member Login">';
+
+              iconHmbrg = '<img src="https://www.sentrylogin.com/sentry/images/icon_hamburger_white.png" align="absmiddle" alt="Member Area">';
+            }
+            else {
+              // Wants no icons
+              iconDr = '';
+              iconHmbrg = '';
+            }
+
+            str = '<span class="SentrySquareMenu" onClick="SentryPopUp();" style="white-space: nowrap;">Log In ' + iconDr + '</span>';
+
+            str = str + '<span class="handCursor SentryHello" style="display: none; white-space: nowrap;"> <span onclick="SentryPopUp(1);" title="Click to enter the member area, make changes to your membership, and more.">Hi, <span class="helloName">(First Name)</span> ' + iconHmbrg + '</span> | <span onclick="LogOut();" style="padding-left: 3px;">Log Out</span></span>';
+
+            for (i = 0; i < elems.length; i++) {
+              elems[i].outerHTML = str;
+
+            }
+
+            elem2 = document.querySelectorAll("span.SentrySquareMenu");
+            for (i = 0; i < elem2.length; i++) {
+              elem2[i].parentNode.href = 'javascript:;';
+              elem2[i].parentNode.parentNode.href = 'javascript:;';
+            }
+
           </script>
-        </section>
-      </div>
-    </div>
-  </body>
+
+          <meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
+          <meta http-equiv="PRAGMA" content="NO-CACHE">
+          <link rel="stylesheet" type="text/css" href="https://www.sentrylogin.com/sentry/scripts/CSS_flat_Kady.css">
+
+          <!--script type="text/javascript" src="https://www.sentrylogin.com/sentry/scripts/Sentry_SquareMenu.js">
+          </script-->
+          <div id="Settings" manner="NORMAL" showSignUp="YES" style="display:none;"></div>
+
+          <div id="SentryOverlay">
+
+
+
+            <div id="SentryOutermost" class="before">
+
+              <div id="SentryLoginBox" style="background-color: #7C0000;border-radius: 14px;">
+
+                <div id="SentryTitleBar" style="background-color: #000000;border-top-left-radius: 14px; border-top-right-radius: 14px;">
+
+                  <div id="iconKey" style=""> </div>
+
+                  <div id="Title" style="color: White;font-family: Rockwell, 'Roboto Slab', Bitter, 'Courier Bold', Courier, Georgia, Times, 'Times New Roman', serif;font-size: 22px;">Member
+                    Login</div>
+
+                  <div id="Welcome" style="color: White;font-family: Rockwell, 'Roboto Slab', Bitter, 'Courier Bold', Courier, Georgia, Times, 'Times New Roman', serif;font-size: 22px;">Welcome,
+                    <span id="welcomeBarName">(First Name)</span>!</div>
+                </div>
+
+                <div id="SentryFormGroup">
+                  <form name="Sentry_login_form" onSubmit="sentryLogin();">
+
+                    <div id="SentryInputGroup" style="height: 79px; width: 282px; border-radius: 7px; border-color: #FFFFFF; background-color: #C9C200;">
+
+                      <div id="iconEmail"> </div> <input type="text" id="Sentry_email" onFocus="Sentry_onfocus(this.id);"
+                        onKeyDown="Sentry_onkeydown(event, this.id);" onKeyUp="Sentry_onkeyup(this.value, this.id, event);"
+                        onBlur="Sentry_onblur(this.value, this.id);" value="E-mail Address" tabindex="1" style="margin: 0px; height: 38px; font-weight: normal;  border-top-right-radius: 6px;background-color: #EAEAEA;font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;font-size: 16px;color: #161616;">
+
+                      <hr class="SentryClear" id="inputsSep" style=" background-color: #FFFFFF;  display: block;">
+
+                      <div id="iconPassword"> </div>
+                      <div id="iconShowPassword"> </div> <input type="text" id="Sentry_password" onFocus="Sentry_onfocus(this.id);" onKeyDown="Sentry_onkeydown(event, this.id);"
+                        onKeyUp="Sentry_onkeyup(this.value, this.id, event);" onBlur="Sentry_onblur(this.value, this.id);"
+                        value="Password" tabindex="2" style="margin: 0px; height: 38px; font-weight: normal;  border-bottom-right-radius: 6px;background-color: #EAEAEA;font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;font-size: 16px;color: #161616;">                      </div>
+
+                    <span id="forgotSpan" onClick="Sentry_onClick(this.id);" lnk="https://www.sentrylogin.com/sentry/sentry_remind_pw.asp?Sentry_ID=21750"
+                      tabindex="0" style="font-family: Tahoma, Geneva, Arial, sans-serif;font-size: 13px; color: #DDDDDD;">Forgot?</span>
+
+                    <input type="checkbox" id="unHide" style="height:0px; width:0px; margin:0px; display: none;" value="1"><span
+                      id="unHideSpan" onClick="Sentry_onClick(this.id);" class="handCursor" title="Do not reveal password in public"
+                      tabindex="0" style="font-family: Tahoma, Geneva, Arial, sans-serif;font-size: 13px;color: #DDDDDD; ">Show</span>
+                    <span id="Stay" onKeyDown="Sentry_onkeydown(event, this.id);" onKeyUp="Sentry_onkeyup(this.value, this.id, event);"
+                      tabindex="3">
+
+                      <input name="" type="checkbox" value="" id="psist" class="SentryCss-checkbox"><label id="psistLabel"
+                        for="psist" class="SentryCss-label" style="font-weight: normal; font-family: Tahoma, Geneva, Arial, sans-serif;font-size: 13px;color: #DDDDDD; ">Stay
+                        Logged In</label></span>
+
+                    <div class="SentryLoginButton" id="Sentry_button" onClick="Sentry_onClick(this.id);" onKeyDown="Sentry_onkeydown(event, this.id);"
+                      onKeyUp="Sentry_onkeyup(this.value, this.id, event);" onblur="Sentry_onblur(this.value, this.id);" tabindex="4"
+                      style="border-radius: 2px;"><span id="lgnBtnText" style="font-family: Rockwell, 'Roboto Slab', Bitter, 'Courier Bold', Courier, Georgia, Times, 'Times New Roman', serif;font-size: 20px;">Log
+                        In</span></div>
+                  </form>
+                </div>
+
+                <style>
+                  .SentryLoginButton {
+
+                    background-color: #DCDCDC;
+
+                    color: #848484;
+
+                  }
+
+                  .SentryLoginButton:hover {
+
+                    background-color: #848484;
+
+                    color: #CCCCCC;
+
+                  }
+                </style>
+
+                <div id="SentryHelloGroup">
+
+
+
+                  <div id="EnterMember" onClick="Sentry_onClick(this.id);" style="font-family: Tahoma, Geneva, Arial, sans-serif;font-size: 16px;color: #FFFFFF; ">Enter
+                    Member Area</div>
+
+
+
+                  <div id="messages" style="display: none; font-family: Tahoma, Geneva, Arial, sans-serif;font-size: 16px;color: #FFFFFF; ">
+                  <span id="msgSpan">(Message automatically replaces this text)</span>
+
+                    <div class="SentryLoginButton" id="msgOkBtn" onClick="Sentry_onClick(this.id);" onKeyDown="Sentry_onkeydown(event, this.id);"
+                      onKeyUp="Sentry_onkeyup(this.value, this.id, event);" tabindex="4" style="border-radius: 2px;"><span
+                        id="msgOkBtnText" style="font-family: Rockwell, 'Roboto Slab', Bitter, 'Courier Bold', Courier, Georgia, Times, 'Times New Roman', serif;font-size: 20px;">OK</span></div>
+                  </div>
+
+                  <div id="wobbler"> </div>
+                </div>
+
+                <div id="SentryFooterBar">
+
+
+                  <style>
+                    #iconProfile {
+                      background: none;
+                      width: 0px;
+                    }
+                  </style>
+
+
+                  <div id="iconProfile"> </div><span id="myProfile" onClick="Sentry_onClick(this.id);" style="font-family: Tahoma, Geneva, Arial, sans-serif;font-size: 16px;color: #FFFFFF;">My
+                    Profile</span>
+
+
+                  <style>
+                    #signUpLnk {
+                      cursor: default;
+                    }
+                  </style>
+
+
+                  <span id="signUpLnk" style="font-family: Tahoma, Geneva, Arial, sans-serif;font-size: 16px;color: #FFFFFF;"></span>
+
+                  <span id="txtLogOut" onClick="LogOut();" style="font-family: Tahoma, Geneva, Arial, sans-serif;font-size: 16px;color: #FFFFFF;">Log
+                    Out</span><div id="xout" onClick="Sentry_onClick(this.id);" title="Close"> </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <input id="Sentry_ID" type="hidden" value="21750">
+
+          <input id="univ" type="hidden" value="1">
+
+          <script> initializeSentry(); </script>
+
+          <!-- END SENTRY AJAX LOGIN FORM -->
+
+
+        </div>
+      </div><!-- #%1$s .widget .%2$s -->
+    </div><!-- .bns-add-widget -->
+    <!-- End - Javascript HTML Text Adder plugin v1.0.1 -->
+
+    <!-- Start - Javascript HTML Text Adder plugin v1.0.1 -->
+    <div class="bns-add-widget">
+      <div id="html_javascript_adder-9" class="widget widget_html_javascript_adder">
+        <div class="hjawidget textwidget">
+          <!-- BEGIN SENTRY - version 3.5 - Member Login Code Copyright © Sentrylogin.com, Shawn, Co. https://www.sentrylogin.com -->
+          <meta name="robots" content="noindex, nofollow">
+          <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+          <style>
+            .Sentry_blanket {
+              background-color: #FFFFFF;
+              position: absolute;
+              z-index: 9001;
+              /*ooveeerrrr nine thoussaaaannnd*/
+              top: 0px;
+              left: 0px;
+              width: 105%;
+              height: 10000px;
+              padding: 20px;
+            }
+          </style>
+          <!--script language="JavaScript" type="text/JavaScript">
+
+/* BEGIN Editable Settings: ///////////////////////////////////////////////////////////*/
+
+PpLID = ""; /* Makes this page viewable by only members of one or more PayPal plans, enter one Ppl ID or more than one separated by commas */
+
+pageLevel = 0; /* Access Level required to view this page   */
+
+SingleOut = 0; /* Makes this page viewable by only one member, enter their account number  */
+
+
+/* END Editable Settings: ////////////////////////////////////////////////////////////*/
+
+Sentry_ID = 21750;
+</script>
+          <script type="text/javascript" src="https://www.sentrylogin.com/sentry/scripts/Sentry_pAJAX.js"></script>
+          <noscript>
+            <meta http-equiv="refresh" content="0; url=https://www.sentrylogin.com/sentry/noscript.asp">
+          </noscript>
+          <div id="Sentry_noJS" class="Sentry_blanket">Sentry Page Protection</div>
+          <div id="Sentry_redirecting" class="Sentry_blanket" style="display:none;">Please Wait...</div>
+          <script language="JavaScript" type="text/JavaScript">
+   URLStr = window.top.location.href;
+   n = URLStr.search("config");
+
+   if (n != -1){
+	   // we are inside the config, don't redirect
+     document.getElementById('Sentry_noJS').style.display = 'none';
+   }
+   else {
+	   //NOT in config, redirect normally
+      if(window.onload){
+        window.onload = SentryProtect;
+      }
+      else if(document.body.onload){
+        document.body.onload = SentryProtect;
+      }
+      else{
+        SentryProtect(); /* call it here  */
+      }
+   }
+</script-->
+          <!-- END Sentry Login Page Protection -->
+        </div>
+      </div><!-- #%1$s .widget .%2$s -->
+    </div><!-- .bns-add-widget -->
+    <!-- End - Javascript HTML Text Adder plugin v1.0.1 -->
+  </div>
+
+  <link rel='stylesheet' id='voice_css-css' href='http://www.thembassy.net/wp-content/plugins/text-to-speech-widget/css/voice.css?ver=1.0'
+    type='text/css' media='' />
+  <script type='text/javascript'>
+    /* <![CDATA[ */
+    var wpcf7 = { "apiSettings": { "root": "http:\/\/www.thembassy.net\/wp-json\/contact-form-7\/v1", "namespace": "contact-form-7\/v1" }, "recaptcha": { "messages": { "empty": "Per favore dimostra che non sei un robot." } } };
+/* ]]> */
+  </script>
+  <script type='text/javascript' src='http://www.thembassy.net/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=5.0.4'></script>
+  <script type='text/javascript' src='http://www.thembassy.net/wp-includes/js/imagesloaded.min.js?ver=3.2.0'></script>
+  <script type='text/javascript' src='http://www.thembassy.net/wp-content/themes/oceanwp/assets/js/third/magnific-popup.min.js?ver=1.5.27'></script>
+  <script type='text/javascript' src='http://www.thembassy.net/wp-content/themes/oceanwp/assets/js/third/lightbox.min.js?ver=1.5.27'></script>
+  <script type='text/javascript'>
+    /* <![CDATA[ */
+    var oceanwpLocalize = { "isRTL": "", "menuSearchStyle": "disabled", "sidrSource": null, "sidrDisplace": "1", "sidrSide": "left", "sidrDropdownTarget": "icon", "verticalHeaderTarget": "icon", "customSelects": ".woocommerce-ordering .orderby, #dropdown_product_cat, .widget_categories select, .widget_archive select, .single-product .variations_form .variations select", "ajax_url": "http:\/\/www.thembassy.net\/wp-admin\/admin-ajax.php" };
+/* ]]> */
+  </script>
+  <script type='text/javascript' src='http://www.thembassy.net/wp-content/themes/oceanwp/assets/js/main.min.js?ver=1.5.27'></script>
+  <script type='text/javascript' src='http://www.thembassy.net/wp-includes/js/wp-embed.min.js?ver=4.9.8'></script>
+  <!--[if lt IE 9]>
+<script type='text/javascript' src='http://www.thembassy.net/wp-content/themes/oceanwp/assets/js//third/html5.min.js?ver=1.5.27'></script>
+<![endif]-->
+  <script type='text/javascript' src='http://www.thembassy.net/wp-content/plugins/text-to-speech-widget/js/responsivevoice.js?ver=1.4.7'></script>
+  <script type='text/javascript' src='http://www.thembassy.net/wp-content/plugins/text-to-speech-widget/js/voice.js?ver=1.0'></script>
+<script>
+  var remoteDicts = [
+    { label: 'PrepPlace', url: 'https://matteo-scarpellini-y77j.squarespace.com/s/PrepPlace.json' },
+  ];
+</script>
+</body>
+
 </html>
