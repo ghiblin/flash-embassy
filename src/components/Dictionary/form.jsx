@@ -116,7 +116,6 @@ class Form extends React.Component {
                 <Radio value="interjuction" />interjuction
               </label>
             </RadioGroup>
-            <br />
             <div className="results">
               <span style={{ marginRight: 10 }}>
                 <b>{ ok }</b>&nbsp;
@@ -127,7 +126,6 @@ class Form extends React.Component {
                 <i className="fa fa-thumbs-down" />
               </span>
             </div>
-            <br />
             <div className="create-card__error">
               { errorMessage }
             </div>

@@ -27,11 +27,12 @@
     position: absolute;
     @media (orientation:landscape) {
       width: 40em;
-      height: 25em;
+      max-height: 25em;
     }
     @media (orientation:portrait) {
       width: 20em;
-      height: 30em;
+      max-height: 36em;
+      height: 90vh;
     }
     height: 20em;
     // width: 30em;
@@ -50,7 +51,7 @@
       font-weight: 400;
       margin-top: 0;
       color: #333;
-      height: 2.5em;
+      height: 1rem;
       line-height: 2.5em;
       vertical-align: middle;
     }  
@@ -117,7 +118,6 @@
     background: white;
     color: #333;
     cursor: pointer;
-    margin-top: 0.75em;
     padding: 0.5em 0.75em;
     
     &:focus {

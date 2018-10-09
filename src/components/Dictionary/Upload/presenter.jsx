@@ -65,9 +65,9 @@ class FileUploader extends React.Component {
 
   fetchJSON(url) {
     fetch(url)
-      .then(res => res.json)
+      .then(res => res.json())
       .then(this.props.upload)
-      .catch(err => {
+      .catch((err) => {
         alert('Error fetching remote json:' + err);
       });
   }

@@ -14,7 +14,8 @@ $color: #fafafa;
   .FileUploader__body {
     position: absolute;
     height: 10em;
-    width: 30em;
+    width: 90vw;
+    max-width: 50rem;
     z-index: 1000;
     background: #d4781af2;
     animation: fadeIn 0.5s;
@@ -61,7 +62,8 @@ $color: #fafafa;
       color: #101010;
       background:rgba(50, 50, 50, 0.2);
       border:0px solid #dbdbdb;
-      width: 15em;
+      width: calc(100% - 120px);
+      max-width: 23rem;
       &::-webkit-input-placeholder {
         font-family: Lato;
         font-weight: bold;
@@ -88,10 +90,9 @@ $color: #fafafa;
   
     button {
       z-index: 1;
-      width: 5em;
-      position:relative;
-      padding:6px 15px;
-      
+      width: 9rem;
+      position: relative;
+      padding: 0px 15px;
       border:2px solid $bgcolor;
       background-color:$bgcolor;
       color: $color;
